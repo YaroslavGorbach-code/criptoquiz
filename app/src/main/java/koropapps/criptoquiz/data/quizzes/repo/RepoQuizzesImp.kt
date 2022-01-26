@@ -1,11 +1,20 @@
 package koropapps.criptoquiz.data.quizzes.repo
 
+import android.content.Context
+import koropapps.criptoquiz.data.quizzes.local.factory.QuestionsFactory
+import koropapps.criptoquiz.data.quizzes.local.factory.QuizzesFactory
+import koropapps.criptoquiz.data.quizzes.local.mapper.QuizNameToShortDescriptionMapper
 import koropapps.criptoquiz.data.quizzes.local.model.Quiz
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
-class RepoQuizzesImp : RepoQuizzes {
+class RepoQuizzesImp(private val context: Context) : RepoQuizzes {
     override fun observe(): Flow<List<Quiz>> {
-        return flowOf(listOf(Quiz.Test, Quiz.Test, Quiz.Test, Quiz.Test))
+        return flowOf(
+            QuizzesFactory(
+                questionsFactory = QuestionsFactory(),
+                quizNameToShortDescriptionMapper = QuizNameToShortDescriptionMapper(context)
+            ).create()
+        )
     }
 }
