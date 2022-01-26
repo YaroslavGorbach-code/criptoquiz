@@ -8,3 +8,4 @@ dependencyResolutionManagement {
 }
 rootProject.name = "criptoquiz"
 include ':app'
+include ':base'

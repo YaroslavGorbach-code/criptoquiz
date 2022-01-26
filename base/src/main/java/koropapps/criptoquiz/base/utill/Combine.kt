@@ -1,6 +1,6 @@
 @file:Suppress("UNCHECKED_CAST")
 
-package koropapps.criptoquiz.utill
+package koropapps.criptoquiz.base
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.combine
