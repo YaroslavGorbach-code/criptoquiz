@@ -1,4 +1,4 @@
-package koropapps.criptoquiz.utill
+package koropapps.criptoquiz.common_ui.ui
 
 import androidx.compose.foundation.LocalIndication
 import androidx.compose.foundation.clickable

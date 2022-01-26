@@ -1,4 +1,4 @@
-package yaroslavgorbach.reaction.feature.common.ui
+package koropapps.criptoquiz.common_ui.ui
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box

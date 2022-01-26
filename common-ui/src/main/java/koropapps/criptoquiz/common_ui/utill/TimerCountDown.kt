@@ -1,4 +1,4 @@
-package koropapps.criptoquiz.utill
+package koropapps.criptoquiz.common_ui.utill
 
 import android.os.CountDownTimer
 import kotlinx.coroutines.CoroutineScope

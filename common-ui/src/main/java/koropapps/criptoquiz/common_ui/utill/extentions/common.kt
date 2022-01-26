@@ -1,4 +1,4 @@
-package koropapps.criptoquiz.utill
+package koropapps.criptoquiz.common_ui.utill.extentions
 
 import android.app.Activity
 import android.content.Context

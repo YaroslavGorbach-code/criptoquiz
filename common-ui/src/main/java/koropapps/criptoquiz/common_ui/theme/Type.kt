@@ -1,4 +1,4 @@
-package koropapps.criptoquiz.feature.common.ui.theme
+package koropapps.criptoquiz.common_ui.theme
 
 import androidx.compose.material.Typography
 import androidx.compose.ui.text.TextStyle

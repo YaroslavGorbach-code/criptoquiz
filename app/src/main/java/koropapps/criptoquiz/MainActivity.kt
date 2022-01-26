@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
-import koropapps.criptoquiz.feature.common.ui.theme.CriptoTheme
+import koropapps.criptoquiz.common_ui.theme.CriptoTheme
 import kotlinx.coroutines.InternalCoroutinesApi
 
 @InternalCoroutinesApi

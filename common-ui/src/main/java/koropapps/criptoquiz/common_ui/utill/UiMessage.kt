@@ -1,5 +1,5 @@
 
-package koropapps.criptoquiz.utill
+package koropapps.criptoquiz.common_ui.utill
 
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
