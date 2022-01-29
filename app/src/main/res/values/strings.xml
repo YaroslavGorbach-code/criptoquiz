@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">criptoquiz</string>
+    <string name="number_of_questions">Вопросов: </string>
+    <string name="minutes">Минут:</string>
 </resources>
