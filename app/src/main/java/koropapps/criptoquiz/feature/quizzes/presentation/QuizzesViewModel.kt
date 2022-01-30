@@ -3,85 +3,60 @@ package koropapps.criptoquiz.feature.quizzes.presentation
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import koropapps.criptoquiz.feature.quizzes.model.QuizzesActions
+import koropapps.criptoquiz.bussines.ObserveQuizzesInteractor
+import koropapps.criptoquiz.common_ui.utill.UiMessage
+import koropapps.criptoquiz.common_ui.utill.UiMessageManager
+import koropapps.criptoquiz.feature.quizzes.model.QuizzesAction
+import koropapps.criptoquiz.feature.quizzes.model.QuizzesUiMessage
+import koropapps.criptoquiz.feature.quizzes.model.QuizzesViewState
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-//@HiltViewModel
-class QuizzesViewModel constructor(
+@HiltViewModel
+class QuizzesViewModel @Inject constructor(
+    observeQuizzesInteractor: ObserveQuizzesInteractor
 ) : ViewModel() {
-    private val pendingActions = MutableSharedFlow<QuizzesActions>()
+    private val pendingActions = MutableSharedFlow<QuizzesAction>()
 
-//    val state: StateFlow<ExercisesViewState> = combine(
-//        observeExercisesInteractor(),
-//        exerciseAvailabilityDialogState,
-//        observeIsFirstAppOpenInteractor(),
-//        uiMessageManager.message,
-//        ::ExercisesViewState
-//    ).stateIn(
-//        scope = viewModelScope,
-//        started = WhileSubscribed(5000),
-//        initialValue = ExercisesViewState.Empty
-//    )
-//
-//    init {
-//        adManager.loadRewordAd()
-//
-//        viewModelScope.launch {
-//            pendingActions.collect { action ->
-//                when (action) {
-//                    is ExercisesActions.HideExerciseIsNotAvailableDialog -> {
-//                        exerciseAvailabilityDialogState.emit(ExercisesViewState.ExerciseAvailabilityDialogState())
-//                    }
-//                    is ExercisesActions.ShowExerciseIsNotAvailableDialog -> {
-//                        exerciseAvailabilityDialogState.emit(
-//                            ExercisesViewState.ExerciseAvailabilityDialogState(
-//                                isVisible = true,
-//                                exerciseName = action.exerciseName
-//                            )
-//                        )
-//                    }
-//                    is ExercisesActions.HideOnboardingDialog -> {
-//                        changeIsFirstAppOpenToFalseInteractor.invoke()
-//                    }
-//                    is ExercisesActions.RequestShowRewordAd -> {
-//                        uiMessageManager.emitMessage(
-//                            UiMessage(
-//                                ExercisesUiMassage.ShowRewardAd(
-//                                    action.exerciseName
-//                                )
-//                            )
-//                        )
-//                    }
-//                    is ExercisesActions.ShowRewordAd -> {
-//                        adManager.showRewardAd(
-//                            activity = action.activity,
-//                        ) {
-//                            viewModelScope.launch {
-//                                makeExerciseAvailableInteractor.invoke(exerciseName = action.exerciseName)
-//                            }
-//                        }
-//                    }
-//                    else -> error("$action is not handled")
-//                }
-//            }
-//        }
-//    }
-//
-//    fun submitAction(action: ExercisesActions) {
-//        viewModelScope.launch {
-//            pendingActions.emit(action)
-//        }
-//    }
-//
-//    fun clearMessage(id: Long) {
-//        viewModelScope.launch {
-//            uiMessageManager.clearMessage(id)
-//        }
-//    }
+    private val uiMessageManager: UiMessageManager<QuizzesUiMessage> = UiMessageManager()
 
+    val state: StateFlow<QuizzesViewState> = combine(
+        observeQuizzesInteractor.invoke(),
+        uiMessageManager.message,
+        ::QuizzesViewState
+    ).stateIn(
+        scope = viewModelScope,
+        started = WhileSubscribed(5000),
+        initialValue = QuizzesViewState.Empty
+    )
+
+    init {
+        viewModelScope.launch {
+            pendingActions.collect { action ->
+                when (action) {
+                    is QuizzesAction.OpenQuiz -> uiMessageManager.emitMessage(
+                        UiMessage(
+                            QuizzesUiMessage.OpenQuiz(action.quizName)
+                        )
+                    )
+                }
+            }
+        }
+    }
+
+    fun submitAction(action: QuizzesAction) {
+        viewModelScope.launch {
+            pendingActions.emit(action)
+        }
+    }
+
+    fun clearMessage(id: Long) {
+        viewModelScope.launch {
+            uiMessageManager.clearMessage(id)
+        }
+    }
 }
 
 

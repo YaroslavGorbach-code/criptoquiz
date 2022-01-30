@@ -14,14 +14,11 @@ data class UiMessage<T>(
     val id: Long = UUID.randomUUID().mostSignificantBits,
 )
 
-class UiMessageManager<T>() {
+class UiMessageManager<T> {
     private val mutex = Mutex()
 
     private val _messages = MutableStateFlow(emptyList<UiMessage<T>>())
 
-    /**
-     * A flow emitting the current message to display.
-     */
     val message: Flow<UiMessage<T>?> = _messages.map { it.firstOrNull() }.distinctUntilChanged()
 
     suspend fun emitMessage(message: UiMessage<T>) {
