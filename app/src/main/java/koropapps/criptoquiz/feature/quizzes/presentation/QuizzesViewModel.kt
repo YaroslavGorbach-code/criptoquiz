@@ -38,7 +38,7 @@ class QuizzesViewModel @Inject constructor(
                 when (action) {
                     is QuizzesAction.OpenDescription -> uiMessageManager.emitMessage(
                         UiMessage(
-                            QuizzesUiMessage.OpenDescription(action.quiz.name)
+                            QuizzesUiMessage.OpenDescription(action.quiz)
                         )
                     )
                 }

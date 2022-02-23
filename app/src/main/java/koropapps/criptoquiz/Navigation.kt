@@ -1,5 +1,6 @@
 package koropapps.criptoquiz
 
+import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
@@ -71,7 +72,14 @@ private fun NavGraphBuilder.addQuizzes(
     root: Screen,
 ) {
     composable(LeafScreen.Quizzes.createRoute(root)) {
-        Quizzes(openQuiz = {})
+        Quizzes(openDescription = { quiz ->
+            navController.navigate(
+                LeafScreen.Description.createRoute(
+                    root = root,
+                    quizName = quiz.name
+                )
+            )
+        })
     }
 }
 

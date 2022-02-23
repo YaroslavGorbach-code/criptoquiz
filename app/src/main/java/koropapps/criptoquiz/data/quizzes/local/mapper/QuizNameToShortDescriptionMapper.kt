@@ -9,6 +9,7 @@ class QuizNameToShortDescriptionMapper(private val context: Context) {
     fun map(name: QuizName): String {
         return when (name) {
             QuizName.NONE -> ""
+            QuizName.WHAT_D_Y_KNOW_ABOUT_BLOCKCHAIN -> "test"
         }
     }
 }

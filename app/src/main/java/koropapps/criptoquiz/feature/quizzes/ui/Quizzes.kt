@@ -2,7 +2,7 @@ package koropapps.criptoquiz.feature.quizzes.ui
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material.*
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.tooling.preview.Preview
@@ -17,11 +17,11 @@ import koropapps.criptoquiz.feature.quizzes.presentation.QuizzesViewModel
 @ExperimentalMaterialApi
 @Composable
 fun Quizzes(
-    openQuiz: (quiz: Quiz) -> Unit,
+    openDescription: (quiz: Quiz) -> Unit,
 ) {
     Quizzes(
         viewModel = hiltViewModel(),
-        openQuizzes = openQuiz,
+        openDescription = openDescription,
     )
 }
 
@@ -29,14 +29,13 @@ fun Quizzes(
 @Composable
 internal fun Quizzes(
     viewModel: QuizzesViewModel,
-    openQuizzes: (quiz: Quiz) -> Unit,
+    openDescription: (quiz: Quiz) -> Unit,
 ) {
-    val viewState = viewModel.state.collectAsState()
-
     Quizzes(
-        state = viewState.value,
+        state = viewModel.state.collectAsState().value,
         onMessageShown = viewModel::clearMessage,
         actioner = viewModel::submitAction,
+        openDescription = openDescription
     )
 }
 
@@ -46,10 +45,12 @@ internal fun Quizzes(
     state: QuizzesViewState,
     actioner: (QuizzesAction) -> Unit,
     onMessageShown: (id: Long) -> Unit,
+    openDescription: (quiz: Quiz) -> Unit,
 ) {
     state.message?.let { uiMessage ->
-        when (uiMessage.message) {
+        when (val message = uiMessage.message) {
             is QuizzesUiMessage.OpenDescription -> {
+                openDescription(message.quiz)
             }
         }
         onMessageShown(uiMessage.id)
@@ -74,7 +75,8 @@ fun ExercisesPreview() {
         Quizzes(
             state = QuizzesViewState(),
             onMessageShown = {},
-            actioner = {}
+            actioner = {},
+            openDescription = {}
         )
     }
 }
