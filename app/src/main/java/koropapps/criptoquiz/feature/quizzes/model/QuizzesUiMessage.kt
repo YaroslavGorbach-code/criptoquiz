@@ -1,7 +1,7 @@
 package koropapps.criptoquiz.feature.quizzes.model
 
-import koropapps.criptoquiz.data.quizzes.local.model.QuizName
+import koropapps.criptoquiz.data.quizzes.local.model.Quiz
 
 sealed class QuizzesUiMessage {
-    class OpenDescription(quizName: QuizName) : QuizzesUiMessage()
+    data class OpenDescription(val quiz: Quiz) : QuizzesUiMessage()
 }

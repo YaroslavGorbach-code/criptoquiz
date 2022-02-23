@@ -1,18 +1,17 @@
 package koropapps.criptoquiz.feature.decription.presentation
 
+import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import koropapps.criptoquiz.bussines.ObserveQuizzesInteractor
+import koropapps.criptoquiz.QUIZ_NAME_ARG
+import koropapps.criptoquiz.bussines.GetQuizInteractor
 import koropapps.criptoquiz.common_ui.utill.UiMessage
 import koropapps.criptoquiz.common_ui.utill.UiMessageManager
-import koropapps.criptoquiz.data.quizzes.local.model.Quiz
+import koropapps.criptoquiz.data.quizzes.local.model.QuizName
 import koropapps.criptoquiz.feature.decription.model.DescriptionAction
 import koropapps.criptoquiz.feature.decription.model.DescriptionUiMessage
 import koropapps.criptoquiz.feature.decription.model.DescriptionViewState
-import koropapps.criptoquiz.feature.quizzes.model.QuizzesAction
-import koropapps.criptoquiz.feature.quizzes.model.QuizzesUiMessage
-import koropapps.criptoquiz.feature.quizzes.model.QuizzesViewState
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
 import kotlinx.coroutines.launch
@@ -20,14 +19,18 @@ import javax.inject.Inject
 
 @HiltViewModel
 class DescriptionViewModel @Inject constructor(
-    private val quiz: Quiz
+    private val getQuizInteractor: GetQuizInteractor,
+    private val savedStateHandle: SavedStateHandle
 ) : ViewModel() {
+
+    val quizName: QuizName = savedStateHandle[QUIZ_NAME_ARG]!!
+
     private val pendingActions = MutableSharedFlow<DescriptionAction>()
 
     private val uiMessageManager: UiMessageManager<DescriptionUiMessage> = UiMessageManager()
 
     val state: StateFlow<DescriptionViewState> = combine(
-        flowOf(quiz),
+        getQuizInteractor(quizName),
         uiMessageManager.message,
         ::DescriptionViewState
     ).stateIn(

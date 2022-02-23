@@ -2,7 +2,10 @@ package koropapps.criptoquiz.feature.quizzes.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.CheckCircle
@@ -17,6 +20,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import koropapps.criptoquiz.R
 import koropapps.criptoquiz.common_ui.theme.CriptoTheme
+import koropapps.criptoquiz.common_ui.ui.singleClickable
 import koropapps.criptoquiz.data.quizzes.local.model.Quiz
 
 @ExperimentalMaterialApi
@@ -27,6 +31,7 @@ fun QuizItem(quiz: Quiz, onQuizClick: (isAvailable: Boolean) -> Unit) {
             .padding(8.dp)
             .fillMaxWidth()
             .height(150.dp)
+            .singleClickable { onQuizClick(true) }
             .background(color = MaterialTheme.colors.onSurface, shape = MaterialTheme.shapes.medium)
             .padding(8.dp)
     )

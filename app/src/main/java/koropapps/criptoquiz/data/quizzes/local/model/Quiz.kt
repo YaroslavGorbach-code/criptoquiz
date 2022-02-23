@@ -5,10 +5,17 @@ data class Quiz(
     val shortDescription: String,
     val progress: Int = 0,
     val questions: List<Question>,
-    val isCompleted: Boolean = false
+    val isCompleted: Boolean = false,
+    val complexity: QuizComplexity
 ) {
     companion object {
-        val Test = Quiz(QuizName.NONE, "test description", 50, emptyList())
+        val Test = Quiz(
+            QuizName.NONE,
+            "test description",
+            50,
+            emptyList(),
+            complexity = QuizComplexity.EASY
+        )
     }
 
     val amountOfMinutesWillTake: Int = questions.size / 2
