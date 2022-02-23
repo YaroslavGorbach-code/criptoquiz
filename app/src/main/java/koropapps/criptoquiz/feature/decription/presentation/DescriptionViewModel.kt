@@ -1,4 +1,4 @@
-package koropapps.criptoquiz.feature.quizzes.presentation
+package koropapps.criptoquiz.feature.decription.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -6,6 +6,10 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import koropapps.criptoquiz.bussines.ObserveQuizzesInteractor
 import koropapps.criptoquiz.common_ui.utill.UiMessage
 import koropapps.criptoquiz.common_ui.utill.UiMessageManager
+import koropapps.criptoquiz.data.quizzes.local.model.Quiz
+import koropapps.criptoquiz.feature.decription.model.DescriptionAction
+import koropapps.criptoquiz.feature.decription.model.DescriptionUiMessage
+import koropapps.criptoquiz.feature.decription.model.DescriptionViewState
 import koropapps.criptoquiz.feature.quizzes.model.QuizzesAction
 import koropapps.criptoquiz.feature.quizzes.model.QuizzesUiMessage
 import koropapps.criptoquiz.feature.quizzes.model.QuizzesViewState
@@ -15,38 +19,36 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class QuizzesViewModel @Inject constructor(
-    observeQuizzesInteractor: ObserveQuizzesInteractor
+class DescriptionViewModel @Inject constructor(
+    private val quiz: Quiz
 ) : ViewModel() {
-    private val pendingActions = MutableSharedFlow<QuizzesAction>()
+    private val pendingActions = MutableSharedFlow<DescriptionAction>()
 
-    private val uiMessageManager: UiMessageManager<QuizzesUiMessage> = UiMessageManager()
+    private val uiMessageManager: UiMessageManager<DescriptionUiMessage> = UiMessageManager()
 
-    val state: StateFlow<QuizzesViewState> = combine(
-        observeQuizzesInteractor.invoke(),
+    val state: StateFlow<DescriptionViewState> = combine(
+        flowOf(quiz),
         uiMessageManager.message,
-        ::QuizzesViewState
+        ::DescriptionViewState
     ).stateIn(
         scope = viewModelScope,
         started = WhileSubscribed(5000),
-        initialValue = QuizzesViewState.Empty
+        initialValue = DescriptionViewState.Test
     )
 
     init {
         viewModelScope.launch {
             pendingActions.collect { action ->
                 when (action) {
-                    is QuizzesAction.OpenDescription -> uiMessageManager.emitMessage(
-                        UiMessage(
-                            QuizzesUiMessage.OpenDescription(action.quiz.name)
-                        )
+                    is DescriptionAction.OpenQuiz -> uiMessageManager.emitMessage(
+                        UiMessage(DescriptionUiMessage.OpenQuiz(action.quiz.name))
                     )
                 }
             }
         }
     }
 
-    fun submitAction(action: QuizzesAction) {
+    fun submitAction(action: DescriptionAction) {
         viewModelScope.launch {
             pendingActions.emit(action)
         }

@@ -21,7 +21,7 @@ import koropapps.criptoquiz.data.quizzes.local.model.Quiz
 
 @ExperimentalMaterialApi
 @Composable
-fun QuizItem(quiz: Quiz, onExerciseClick: (isAvailable: Boolean) -> Unit) {
+fun QuizItem(quiz: Quiz, onQuizClick: (isAvailable: Boolean) -> Unit) {
     Column(
         modifier = Modifier
             .padding(8.dp)
@@ -91,6 +91,6 @@ fun QuizItem(quiz: Quiz, onExerciseClick: (isAvailable: Boolean) -> Unit) {
 @Composable
 fun QuizItemPreview(quiz: Quiz = Quiz.Test) {
     CriptoTheme {
-        QuizItem(quiz = quiz, onExerciseClick = {})
+        QuizItem(quiz = quiz, onQuizClick = {})
     }
 }

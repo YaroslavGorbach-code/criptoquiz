@@ -1,5 +1,7 @@
 package koropapps.criptoquiz.data.quizzes.local.model
 
+import koropapps.criptoquiz.R
+
 enum class QuizName(val resId: Int) {
-    NONE(0)
+    NONE(R.string.empty)
 }

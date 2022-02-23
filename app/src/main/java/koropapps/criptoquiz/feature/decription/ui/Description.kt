@@ -1,39 +1,40 @@
-package koropapps.criptoquiz.feature.quizzes.ui
+package koropapps.criptoquiz.feature.decription.ui
 
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
-import androidx.compose.material.*
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import koropapps.criptoquiz.common_ui.theme.CriptoTheme
 import koropapps.criptoquiz.data.quizzes.local.model.Quiz
-import koropapps.criptoquiz.feature.quizzes.model.QuizzesAction
-import koropapps.criptoquiz.feature.quizzes.model.QuizzesUiMessage
+import koropapps.criptoquiz.data.quizzes.local.model.QuizName
+import koropapps.criptoquiz.feature.decription.model.DescriptionAction
+import koropapps.criptoquiz.feature.decription.model.DescriptionUiMessage
+import koropapps.criptoquiz.feature.decription.model.DescriptionViewState
+import koropapps.criptoquiz.feature.decription.presentation.DescriptionViewModel
 import koropapps.criptoquiz.feature.quizzes.model.QuizzesViewState
-import koropapps.criptoquiz.feature.quizzes.presentation.QuizzesViewModel
 
 @ExperimentalMaterialApi
 @Composable
-fun Quizzes(
+fun Description(
+    quizName: QuizName,
     openQuiz: (quiz: Quiz) -> Unit,
 ) {
-    Quizzes(
+    Description(
         viewModel = hiltViewModel(),
-        openQuizzes = openQuiz,
+        openQuiz = openQuiz,
     )
 }
 
 @ExperimentalMaterialApi
 @Composable
-internal fun Quizzes(
-    viewModel: QuizzesViewModel,
-    openQuizzes: (quiz: Quiz) -> Unit,
+internal fun Description(
+    viewModel: DescriptionViewModel,
+    openQuiz: (quiz: Quiz) -> Unit,
 ) {
     val viewState = viewModel.state.collectAsState()
 
-    Quizzes(
+    Description(
         state = viewState.value,
         onMessageShown = viewModel::clearMessage,
         actioner = viewModel::submitAction,
@@ -42,28 +43,20 @@ internal fun Quizzes(
 
 @ExperimentalMaterialApi
 @Composable
-internal fun Quizzes(
-    state: QuizzesViewState,
-    actioner: (QuizzesAction) -> Unit,
+internal fun Description(
+    state: DescriptionViewState,
+    actioner: (DescriptionAction) -> Unit,
     onMessageShown: (id: Long) -> Unit,
 ) {
     state.message?.let { uiMessage ->
         when (uiMessage.message) {
-            is QuizzesUiMessage.OpenDescription -> {
+            is DescriptionUiMessage.OpenQuiz -> {
+
             }
         }
         onMessageShown(uiMessage.id)
     }
 
-    LazyColumn {
-        items(state.quizzes) { quiz ->
-            QuizItem(quiz = quiz) { isAvailable ->
-                if (isAvailable){
-                    actioner(QuizzesAction.OpenDescription(quiz))
-                }
-            }
-        }
-    }
 }
 
 @ExperimentalMaterialApi
@@ -71,8 +64,8 @@ internal fun Quizzes(
 @Composable
 fun ExercisesPreview() {
     CriptoTheme {
-        Quizzes(
-            state = QuizzesViewState(),
+        Description(
+            state = DescriptionViewState(),
             onMessageShown = {},
             actioner = {}
         )
