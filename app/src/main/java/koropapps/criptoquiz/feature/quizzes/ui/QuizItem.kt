@@ -1,45 +1,39 @@
 package koropapps.criptoquiz.feature.quizzes.ui
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Icon
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Text
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
-import androidx.compose.material.icons.filled.CheckCircle
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterVertically
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import koropapps.criptoquiz.R
-import koropapps.criptoquiz.common_ui.theme.CriptoTheme
-import koropapps.criptoquiz.common_ui.ui.singleClickable
+import koropapps.criptoquiz.common_ui.theme.CryptoTheme
+import koropapps.criptoquiz.common_ui.theme.OnSurface
+import koropapps.criptoquiz.common_ui.theme.PrimaryText
+import koropapps.criptoquiz.common_ui.theme.SecondaryText
 import koropapps.criptoquiz.data.quizzes.local.model.Quiz
 
 @ExperimentalMaterialApi
 @Composable
-fun QuizItem(quiz: Quiz, onQuizClick: (isAvailable: Boolean) -> Unit) {
+fun QuizItem(quiz: Quiz, onStartClick: () -> Unit) {
     Column(
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth()
-            .height(150.dp)
-            .singleClickable { onQuizClick(true) }
-            .background(color = MaterialTheme.colors.onSurface, shape = MaterialTheme.shapes.medium)
-            .padding(8.dp)
+            .height(180.dp)
+            .background(color = OnSurface, shape = MaterialTheme.shapes.medium)
+            .padding(16.dp)
     )
     {
-        if(quiz.isCompleted){
-            Icon(Icons.Filled.CheckCircle, contentDescription = "", tint = Color.Green)
-        }
-
         Row(
             Modifier
                 .fillMaxSize()
@@ -53,40 +47,38 @@ fun QuizItem(quiz: Quiz, onQuizClick: (isAvailable: Boolean) -> Unit) {
                     .size(80.dp)
                     .align(CenterVertically)
             )
-            Column(modifier = Modifier.align(CenterVertically)) {
+            Column(
+                modifier = Modifier
+                    .align(CenterVertically)
+                    .padding(start = 8.dp)
+            ) {
                 Text(
                     text = stringResource(id = quiz.name.resId),
                     style = MaterialTheme.typography.caption,
-                    fontSize = 16.sp,
+                    color = PrimaryText,
+                    fontSize = 18.sp,
                 )
                 Text(
-                    text = quiz.shortDescription,
+                    text = stringResource(id = quiz.descriptionRes),
                     style = MaterialTheme.typography.h3,
                     fontSize = 14.sp,
-                    modifier = Modifier.padding(top = 4.dp)
+                    color = SecondaryText,
+                    modifier = Modifier.padding(top = 4.dp),
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }
 
-        Row(Modifier.fillMaxWidth()) {
-            Text(
-                text = stringResource(id = R.string.number_of_questions) + " " + quiz.numberOfQuestions.toString(),
-                style = MaterialTheme.typography.h3,
-                fontSize = 12.sp,
-                modifier = Modifier
-                    .padding(top = 4.dp)
-                    .weight(0.5f)
-            )
-
-            Text(
-                text = stringResource(id = R.string.minutes) + " " + quiz.amountOfMinutesWillTake.toString(),
-                style = MaterialTheme.typography.h3,
-                fontSize = 12.sp,
-                textAlign = TextAlign.End,
-                modifier = Modifier
-                    .padding(top = 4.dp)
-                    .weight(0.5f),
-            )
+        OutlinedButton(
+            onClick = { onStartClick() },
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(start = 16.dp, end = 16.dp, top = 16.dp),
+            border = BorderStroke(1.dp, MaterialTheme.colors.primary),
+            shape = RoundedCornerShape(30),
+            colors = ButtonDefaults.outlinedButtonColors(backgroundColor = OnSurface)
+        ) {
+            Text(text = stringResource(id = R.string.start_quiz))
         }
     }
 }
@@ -95,7 +87,7 @@ fun QuizItem(quiz: Quiz, onQuizClick: (isAvailable: Boolean) -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun QuizItemPreview(quiz: Quiz = Quiz.Test) {
-    CriptoTheme {
-        QuizItem(quiz = quiz, onQuizClick = {})
+    CryptoTheme {
+        QuizItem(quiz = quiz) {}
     }
 }

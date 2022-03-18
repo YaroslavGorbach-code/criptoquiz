@@ -1,6 +1,5 @@
 package koropapps.criptoquiz.di.data
 
-import android.app.Application
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -13,7 +12,7 @@ import koropapps.criptoquiz.data.quizzes.repo.RepoQuizzesImp
 class DataQuizzesModule {
 
     @Provides
-    fun provideQuizzesRepo(app: Application): RepoQuizzes {
-        return RepoQuizzesImp(app.applicationContext)
+    fun provideQuizzesRepo(): RepoQuizzes {
+        return RepoQuizzesImp()
     }
 }

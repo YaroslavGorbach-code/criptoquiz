@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bitcoin_beginer_question_1">Which bank is the first to accept Bitcoin for charitable donations?</string>
+    <string name="bitcoin_beginer_question_1_answer_1">Royal Bank of Scotland (RBS)</string>
+    <string name="bitcoin_beginer_question_1_answer_2">HSBC</string>
+    <string name="bitcoin_beginer_question_1_answer_3">Barclays</string>
+    <string name="bitcoin_beginer_question_1_answer_4">The Bitcoin Bank</string>
+
+    <string name="bitcoin_beginer_question_2">How does the Bitcoin Protocol Work?</string>
+    <string name="bitcoin_beginer_question_2_answer_1">It is centralised</string>
+    <string name="bitcoin_beginer_question_2_answer_2">It is de-centralised</string>
+    <string name="bitcoin_beginer_question_2_answer_3">It is owned by the Bitcoin Foundation</string>
+    <string name="bitcoin_beginer_question_2_answer_4">Skynet</string>
+
+    <string name="bitcoin_beginer_question_3">What technology is Bitcoin built on?</string>
+    <string name="bitcoin_beginer_question_3_answer_1">The famous Volkswagon Eco engine</string>
+    <string name="bitcoin_beginer_question_3_answer_2">Javascript</string>
+    <string name="bitcoin_beginer_question_3_answer_3">Telepathy</string>
+    <string name="bitcoin_beginer_question_3_answer_4">The Blockchain</string>
+
+    <string name="bitcoin_beginer_question_4">What is Cryptography?</string>
+    <string name="bitcoin_beginer_question_4_answer_1">A way of sending information securely over an insecure environment</string>
+    <string name="bitcoin_beginer_question_4_answer_2">A way of sending information to multiple people at the same time</string>
+    <string name="bitcoin_beginer_question_4_answer_3">Charting the number of transactions per second on the Bitcoin network</string>
+    <string name="bitcoin_beginer_question_4_answer_4">Using the Crypt Protocol to analyse the security of the Bitcoin Network</string>
+
+    <string name="bitcoin_beginer_question_5">What can\'t you pay for with Bitcoin?</string>
+    <string name="bitcoin_beginer_question_5_answer_1">Property</string>
+    <string name="bitcoin_beginer_question_5_answer_2">University Fees</string>
+    <string name="bitcoin_beginer_question_5_answer_3">You can buy almost anything</string>
+    <string name="bitcoin_beginer_question_5_answer_4">Other Crypto Currencies or Assets</string>
+
+    <string name="bitcoin_beginer_question_6">What is a Satoshi?</string>
+    <string name="bitcoin_beginer_question_6_answer_1">A denomination in Bitcoin like pence and pounds</string>
+    <string name="bitcoin_beginer_question_6_answer_2">A comment from Satoshi Nakomoto on BitcoinTalk</string>
+    <string name="bitcoin_beginer_question_6_answer_3">100 Bitcoin</string>
+    <string name="bitcoin_beginer_question_6_answer_4">A transaction send to the Bitcoin Foundation</string>
+
+    <string name="bitcoin_beginer_question_7">Where can I buy Bitcoin from?</string>
+    <string name="bitcoin_beginer_question_7_answer_1">Middle Earth</string>
+    <string name="bitcoin_beginer_question_7_answer_2">A Bank, the Post Office or any public services building</string>
+    <string name="bitcoin_beginer_question_7_answer_3">An online exchange, off friends or at a Bitcoin ATM</string>
+    <string name="bitcoin_beginer_question_7_answer_4">You can\'t as it doesn't exist</string>
+
+    <string name="bitcoin_beginer_question_8">Who can contribute to the Bitcoin Protocol?</string>
+    <string name="bitcoin_beginer_question_8_answer_1">Satoshi Nakomoto</string>
+    <string name="bitcoin_beginer_question_8_answer_2">The US Government</string>
+    <string name="bitcoin_beginer_question_8_answer_3">Gavin Andresen</string>
+    <string name="bitcoin_beginer_question_8_answer_4">Anyone can contribute</string>
+
+    <string name="bitcoin_beginer_question_9">Which Exchange filed for Bankruptcy in February 2014?</string>
+    <string name="bitcoin_beginer_question_9_answer_1">Bitcoin Global Exchange</string>
+    <string name="bitcoin_beginer_question_9_answer_2">Bitcoin Bible</string>
+    <string name="bitcoin_beginer_question_9_answer_3">Mt Gox</string>
+    <string name="bitcoin_beginer_question_9_answer_4">Coin\'o'mart</string>
+
+    <string name="bitcoin_beginer_question_10">Who was the CEO of Mt Gox?</string>
+    <string name="bitcoin_beginer_question_10_answer_1">Mark Karpeles</string>
+    <string name="bitcoin_beginer_question_10_answer_2">Ross Ulbricht</string>
+    <string name="bitcoin_beginer_question_10_answer_3">Jeremy Corbyn</string>
+    <string name="bitcoin_beginer_question_10_answer_4">Dorian Nakomoto</string>
+
+    <string name="bitcoin_beginer_question_11">Which famous boxer owns a Bitcoin ATM Company?</string>
+    <string name="bitcoin_beginer_question_11_answer_1">Vladimir Klitschko</string>
+    <string name="bitcoin_beginer_question_11_answer_2">Vitali Klitschko</string>
+    <string name="bitcoin_beginer_question_11_answer_3">David Haye</string>
+    <string name="bitcoin_beginer_question_11_answer_4">Mike Tyson</string>
+
+    <string name="bitcoin_beginer_question_12">What are the accepted Bitcoin Tickers/currency codes?</string>
+    <string name="bitcoin_beginer_question_12_answer_1">BTC or BIT</string>
+    <string name="bitcoin_beginer_question_12_answer_2">BIT or XBT</string>
+    <string name="bitcoin_beginer_question_12_answer_3">BCN or LTC</string>
+    <string name="bitcoin_beginer_question_12_answer_4">BTC or XBT</string>
+
+    <string name="bitcoin_beginer_question_13">Which is the most popular Crypto Currency?</string>
+    <string name="bitcoin_beginer_question_13_answer_1">Dash</string>
+    <string name="bitcoin_beginer_question_13_answer_2">Litecoin</string>
+    <string name="bitcoin_beginer_question_13_answer_3">Dogecoin</string>
+    <string name="bitcoin_beginer_question_13_answer_4">Bitcoin</string>
+
+    <string name="bitcoin_beginer_question_14">Who are the CypherPunks?</string>
+    <string name="bitcoin_beginer_question_14_answer_1">A 90\'s Electro Pop Band who sung a song about Bitcoin</string>
+    <string name="bitcoin_beginer_question_14_answer_2">The Hacker group who broke into Mt Gox</string>
+    <string name="bitcoin_beginer_question_14_answer_3">A splinter group of anonymous</string>
+    <string name="bitcoin_beginer_question_14_answer_4">A group of people who believe privacy is necessary in the electronic age</string>
+
+    <string name="bitcoin_beginer_question_15">Is Bitcoin anonymous?</string>
+    <string name="bitcoin_beginer_question_15_answer_1">Yes its completely anonymous</string>
+    <string name="bitcoin_beginer_question_15_answer_2">No its completely non anonymous</string>
+    <string name="bitcoin_beginer_question_15_answer_3">Sort of - if people know your address they can see what you\'ve spent</string>
+    <string name="bitcoin_beginer_question_15_answer_4">Sort of - if people know your address they know where you live</string>
+
+    <string name="bitcoin_beginer_question_16">How do Bitcoin Miners make money?</string>
+    <string name="bitcoin_beginer_question_16_answer_1">Through transaction fees and the block reward</string>
+    <string name="bitcoin_beginer_question_16_answer_2">Transaction fees only</string>
+    <string name="bitcoin_beginer_question_16_answer_3">The block reward only</string>
+    <string name="bitcoin_beginer_question_16_answer_4">They go to work at the local mine</string>
+
+    <string name="bitcoin_beginer_question_17">When was the Bitcoin software first released?</string>
+    <string name="bitcoin_beginer_question_17_answer_1">2002</string>
+    <string name="bitcoin_beginer_question_17_answer_2">2009</string>
+    <string name="bitcoin_beginer_question_17_answer_3">2012</string>
+    <string name="bitcoin_beginer_question_17_answer_4">2001</string>
+
+    <string name="bitcoin_beginer_question_18">Who is a main Bitcoin Developer / Contributor?</string>
+    <string name="bitcoin_beginer_question_18_answer_1">Gavin Andresen</string>
+    <string name="bitcoin_beginer_question_18_answer_2">Harry Potter</string>
+    <string name="bitcoin_beginer_question_18_answer_3">John Williams</string>
+    <string name="bitcoin_beginer_question_18_answer_4">Peter Hart</string>
+
+    <string name="bitcoin_beginer_question_19">Who ran the Silk Road?</string>
+    <string name="bitcoin_beginer_question_19_answer_1">Ross Ulbricht</string>
+    <string name="bitcoin_beginer_question_19_answer_2">Mark Karpeles</string>
+    <string name="bitcoin_beginer_question_19_answer_3">Ron Jeremy</string>
+    <string name="bitcoin_beginer_question_19_answer_4">Mike Tyson</string>
+
+    <string name="bitcoin_beginer_question_20">What is Hashing?</string>
+    <string name="bitcoin_beginer_question_20_answer_1">A way of selling drugs on the darknet</string>
+    <string name="bitcoin_beginer_question_20_answer_2">Donald Trumps\'s mental process</string>
+    <string name="bitcoin_beginer_question_20_answer_3">A one way conversion of a string to another string</string>
+    <string name="bitcoin_beginer_question_20_answer_4">Coding in Bitcoin using C#</string>
+</resources>

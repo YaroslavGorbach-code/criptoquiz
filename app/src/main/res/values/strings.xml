@@ -2,8 +2,11 @@
     <string name="app_name">criptoquiz</string>
     <string name="number_of_questions">Вопросов: </string>
     <string name="minutes">Минут:</string>
-    <string name="empty"/>
-
-    <string name="name_what_do_you_know_about_blockchain">Тест: «Да что ты знаешь о блокчейне?»</string>
-
+    <string name="empty" />
+    <string name="start_quiz">START QUIZ</string>
+    <string name="test_quiz_name">Test quiz name</string>
+    <string name="description_test">
+        Test descriptionTest description Test description Test description
+        Test descriptionTest description Test description Test description
+    </string>
 </resources>

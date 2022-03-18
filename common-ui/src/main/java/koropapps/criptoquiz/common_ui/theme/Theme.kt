@@ -8,17 +8,15 @@ import androidx.compose.runtime.Composable
 import com.google.accompanist.systemuicontroller.rememberSystemUiController
 
 private val DarkColorPalette = darkColors(
-    primary = Red200,
-    primaryVariant = Red700,
-    secondary = Pink200,
-    onSurface = LightDark
+    primary = Primary,
+    primaryVariant = Primary,
+    secondary = Secondary,
 )
 
 private val LightColorPalette = lightColors(
-    primary = Red400,
-    primaryVariant = Red700,
-    secondary = Pink200,
-    onSurface = SuperLightGray,
+    primary = Primary,
+    primaryVariant = Primary,
+    secondary = Secondary,
 
     /* Other default colors to override
     background = Color.White,
@@ -30,22 +28,23 @@ private val LightColorPalette = lightColors(
 )
 
 @Composable
-fun CriptoTheme(isDarkTheme: Boolean = isSystemInDarkTheme(), content: @Composable() () -> Unit) {
-    val colors = if (isDarkTheme) {
-        DarkColorPalette
-    } else {
-        LightColorPalette
-    }
+fun CryptoTheme(isDarkTheme: Boolean = isSystemInDarkTheme(), content: @Composable () -> Unit) {
+//    val colors = if (isDarkTheme) {
+//        DarkColorPalette
+//    } else {
+//        LightColorPalette
+//    }
+
+    // TODO: 3/9/2022 implement dark theme later
 
     val systemUiController = rememberSystemUiController()
-
     systemUiController.setSystemBarsColor(
         color = if (isDarkTheme) DarkColorPalette.background else LightColorPalette.background,
         darkIcons = isDarkTheme.not()
     )
 
     MaterialTheme(
-        colors = colors,
+        colors = LightColorPalette,
         typography = Typography,
         shapes = Shapes,
         content = content

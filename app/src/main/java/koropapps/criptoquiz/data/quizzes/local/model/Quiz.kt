@@ -1,8 +1,10 @@
 package koropapps.criptoquiz.data.quizzes.local.model
 
+import koropapps.criptoquiz.R
+
 data class Quiz(
     val name: QuizName,
-    val shortDescription: String,
+    val descriptionRes: Int,
     val progress: Int = 0,
     val questions: List<Question>,
     val isCompleted: Boolean = false,
@@ -10,8 +12,8 @@ data class Quiz(
 ) {
     companion object {
         val Test = Quiz(
-            QuizName.NONE,
-            "test description",
+            QuizName.TEST,
+            R.string.description_test,
             50,
             emptyList(),
             complexity = QuizComplexity.EASY
