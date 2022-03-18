@@ -9,12 +9,12 @@ import koropapps.criptoquiz.data.quizzes.local.model.Quiz
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
 
-class RepoQuizzesImp(private val context: Context) : RepoQuizzes {
+class RepoQuizzesImp() : RepoQuizzes {
     override fun observe(): Flow<List<Quiz>> {
         return flowOf(
             QuizzesFactory(
                 questionsFactory = QuestionsFactory(),
-                quizNameToShortDescriptionMapper = QuizNameToShortDescriptionMapper(context),
+                quizNameToShortDescriptionMapper = QuizNameToShortDescriptionMapper(),
                 quizNameToQuizComplexityMapper = QuizNameToQuizComplexityMapper()
             ).create()
         )

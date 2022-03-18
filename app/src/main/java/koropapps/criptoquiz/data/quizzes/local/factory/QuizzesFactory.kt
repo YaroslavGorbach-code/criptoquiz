@@ -16,7 +16,7 @@ class QuizzesFactory(
         return names.map { name ->
             Quiz(
                 name = name,
-                shortDescription = quizNameToShortDescriptionMapper.map(name),
+                descriptionRes = quizNameToShortDescriptionMapper.map(name),
                 questions = questionsFactory.create(name),
                 complexity = quizNameToQuizComplexityMapper.map(name)
             )

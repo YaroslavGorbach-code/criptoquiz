@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bitcoin_intermediate_question_1">What is a Bitcoin transaction locktime?</string>
+    <string name="bitcoin_intermediate_question_1_answer_1">The time taken to send the transaction from your mobile to the nearest full node</string>
+    <string name="bitcoin_intermediate_question_1_answer_2_correct">The earliest time a transaction can be included in a block</string>
+    <string name="bitcoin_intermediate_question_1_answer_3">The time taken to get a transaction confirmed in a block</string>
+    <string name="bitcoin_intermediate_question_1_answer_4">The ability to backdate a transaction in the blockchain</string>
+
+    <string name="bitcoin_intermediate_question_2">How many Bitcoins will there ever be?</string>
+    <string name="bitcoin_intermediate_question_2_answer_1_correct">21 million in 2140</string>
+    <string name="bitcoin_intermediate_question_2_answer_2">21 million in 2020</string>
+    <string name="bitcoin_intermediate_question_2_answer_3">14 million 2015</string>
+    <string name="bitcoin_intermediate_question_2_answer_4">23 million in 2140</string>
+
+    <string name="bitcoin_intermediate_question_3">What is the Blockchain?</string>
+    <string name="bitcoin_intermediate_question_3_answer_1">A centralised database</string>
+    <string name="bitcoin_intermediate_question_3_answer_2">A set of transactions</string>
+    <string name="bitcoin_intermediate_question_3_answer_3_correct">A set of blocks containing transactions</string>
+    <string name="bitcoin_intermediate_question_3_answer_4">The Bitcoin software protocol</string>
+
+    <string name="bitcoin_intermediate_question_4">What is the Blocksize Limit (2015)?</string>
+    <string name="bitcoin_intermediate_question_4_answer_1_correct">1 MB</string>
+    <string name="bitcoin_intermediate_question_4_answer_2">It varies according to supply and demand</string>
+    <string name="bitcoin_intermediate_question_4_answer_3">8 MB</string>
+    <string name="bitcoin_intermediate_question_4_answer_4">2 MB</string>
+
+    <string name="bitcoin_intermediate_question_5">What is Cold Storage?</string>
+    <string name="bitcoin_intermediate_question_5_answer_1">Switching your phone off as you make a transaction</string>
+    <string name="bitcoin_intermediate_question_5_answer_2">Running a Bitcoin node offline</string>
+    <string name="bitcoin_intermediate_question_5_answer_3">Cooling your mining equipment with extra fans to stop over heating</string>
+    <string name="bitcoin_intermediate_question_5_answer_4_correct">Storing your Private key offline</string>
+
+    <string name="bitcoin_intermediate_question_6">What is Green Listing?</string>
+    <string name="bitcoin_intermediate_question_6_answer_1">A way of making mining more efficient</string>
+    <string name="bitcoin_intermediate_question_6_answer_2">A wallet address that has no formal identity attached</string>
+    <string name="bitcoin_intermediate_question_6_answer_3">A private key that is publicly known</string>
+    <string name="bitcoin_intermediate_question_6_answer_4_correct">Linking someone\'s identity to their Bitcoin address</string>
+
+    <string name="bitcoin_intermediate_question_7">What is a Private Key in Bitcoin?</string>
+    <string name="bitcoin_intermediate_question_7_answer_1">The password to your account</string>
+    <string name="bitcoin_intermediate_question_7_answer_2">Performing a transaction anonymously</string>
+    <string name="bitcoin_intermediate_question_7_answer_3_correct">The secret number that generates your public address</string>
+    <string name="bitcoin_intermediate_question_7_answer_4">The ability to access the Blockchain</string>
+
+    <string name="bitcoin_intermediate_question_8">How does a miner choose which transactions go into the next block?</string>
+    <string name="bitcoin_intermediate_question_8_answer_1">Lucky Dip!</string>
+    <string name="bitcoin_intermediate_question_8_answer_2_correct">A balance between transaction age and size - with high priority transactions given allocated space</string>
+    <string name="bitcoin_intermediate_question_8_answer_3">All the transactions with the highest fees above 10 Satoshi</string>
+    <string name="bitcoin_intermediate_question_8_answer_4">All the transactions it can</string>
+
+    <string name="bitcoin_intermediate_question_9">How many blocks are need before a generation transaction is released?</string>
+    <string name="bitcoin_intermediate_question_9_answer_1">50</string>
+    <string name="bitcoin_intermediate_question_9_answer_2_correct">100</string>
+    <string name="bitcoin_intermediate_question_9_answer_3">1</string>
+    <string name="bitcoin_intermediate_question_9_answer_4">1000</string>
+
+    <string name="bitcoin_intermediate_question_10">What is an advantage of Bitcoin?</string>
+    <string name="bitcoin_intermediate_question_10_answer_1">It\'s in-built Inflation</string>
+    <string name="bitcoin_intermediate_question_10_answer_2_correct">The total money supply is pre-determined</string>
+    <string name="bitcoin_intermediate_question_10_answer_3">It\'s the fastest confirming crypto currency</string>
+    <string name="bitcoin_intermediate_question_10_answer_4">Your grandma will be totally ok to use it to buy groceries</string>
+
+    <string name="bitcoin_intermediate_question_11">What is a Mining Pool?</string>
+    <string name="bitcoin_intermediate_question_11_answer_1_correct">A syndicate of miners grouping together to lower the volatility of returns</string>
+    <string name="bitcoin_intermediate_question_11_answer_2">A syndicate of miners grouping together to increase their returns</string>
+    <string name="bitcoin_intermediate_question_11_answer_3">A syndicate of miners profits from 1 day of mining Bitcoin</string>
+    <string name="bitcoin_intermediate_question_11_answer_4">A refreshing place to cool off after a long hard days mining</string>
+
+    <string name="bitcoin_intermediate_question_12">What is SHA-256?</string>
+    <string name="bitcoin_intermediate_question_12_answer_1">The hashing algorithm used in Litecoin</string>
+    <string name="bitcoin_intermediate_question_12_answer_2">The hashing algorithm used in both Litecoin and Bitcoin</string>
+    <string name="bitcoin_intermediate_question_12_answer_3_correct">The hashing algorithm used in Bitcoin and some other crypto currencies</string>
+    <string name="bitcoin_intermediate_question_12_answer_4">A hashing algorithm used to generate a private key from a public key</string>
+
+    <string name="bitcoin_intermediate_question_13">What is Bitcoin Transaction Malleability?</string>
+    <string name="bitcoin_intermediate_question_13_answer_1">The ability to send transactions anywhere</string>
+    <string name="bitcoin_intermediate_question_13_answer_2_correct">A hack used to expose vulnerabilities in Mt Gox</string>
+    <string name="bitcoin_intermediate_question_13_answer_3">A way of bending Bitcoin to your will</string>
+    <string name="bitcoin_intermediate_question_13_answer_4">The ability to send a transaction only if two people agree</string>
+
+    <string name="bitcoin_intermediate_question_14">What is Bitcoin Cloud Mining?</string>
+    <string name="bitcoin_intermediate_question_14_answer_1">Running your mining computer with extra cooling</string>
+    <string name="bitcoin_intermediate_question_14_answer_2_correct">Outsourcing the day to day maintenance of mining to a third party</string>
+    <string name="bitcoin_intermediate_question_14_answer_3">A way of pooling miners to generate higher returns</string>
+    <string name="bitcoin_intermediate_question_14_answer_4">A bias in the Bitcoin protocol to nodes placed closer together</string>
+
+    <string name="bitcoin_intermediate_question_15">What is Merged Mining?</string>
+    <string name="bitcoin_intermediate_question_15_answer_1">A way of mining Bitcoin with two processors</string>
+    <string name="bitcoin_intermediate_question_15_answer_2">A way of mining Bitcoin for one block and then dogecoin for the next</string>
+    <string name="bitcoin_intermediate_question_15_answer_3">Mining Bitcoin with lots of other people and sharing the block reward</string>
+    <string name="bitcoin_intermediate_question_15_answer_4_correct">Mining Bitcoin and another same algorothm Crypto at the same time</string>
+
+    <string name="bitcoin_intermediate_question_16">What is Scrypt?</string>
+    <string name="bitcoin_intermediate_question_16_answer_1">A memory hard hashing technique that uses less RAM to store variables than SHA-256</string>
+    <string name="bitcoin_intermediate_question_16_answer_2">A memory soft hashing technique that uses less RAM to store variables than SHA-256</string>
+    <string name="bitcoin_intermediate_question_16_answer_3">A memory soft hashing technique that uses more RAM to store variables than SHA-256</string>
+    <string name="bitcoin_intermediate_question_16_answer_4_correct">A memory hard hashing technique that uses more RAM to store variables than SHA-256</string>
+
+    <string name="bitcoin_intermediate_question_17">What is Multi Pool Mining?</string>
+    <string name="bitcoin_intermediate_question_17_answer_1">Jumping from winning Bitcoin mining pool as each reward comes in</string>
+    <string name="bitcoin_intermediate_question_17_answer_2">Combining the power of multiple hashing factories to make a super pool</string>
+    <string name="bitcoin_intermediate_question_17_answer_3">Increasing your hashrate with others to perform a 51% attack</string>
+    <string name="bitcoin_intermediate_question_17_answer_4_correct">Mining the most profitable crypto after each block</string>
+
+    <string name="bitcoin_intermediate_question_18">What is a Bitcoin Vanity Address?</string>
+    <string name="bitcoin_intermediate_question_18_answer_1">A way of keeping your address secret by writing it backwards</string>
+    <string name="bitcoin_intermediate_question_18_answer_2_correct">An public address that holds some value due to the characters in it</string>
+    <string name="bitcoin_intermediate_question_18_answer_3">An address that masks the true purpose of where the Bitcoins are being sent</string>
+    <string name="bitcoin_intermediate_question_18_answer_4">An address printed on a piece of paper</string>
+
+    <string name="bitcoin_intermediate_question_19">What is a BIPS?</string>
+    <string name="bitcoin_intermediate_question_19_answer_1">A Bitcoin Initial Protocol Setting</string>
+    <string name="bitcoin_intermediate_question_19_answer_2">The Bitcoin Image Police</string>
+    <string name="bitcoin_intermediate_question_19_answer_3_correct">A Bitcoin Improvement Proposal</string>
+    <string name="bitcoin_intermediate_question_19_answer_4">Kanye West\'s new baby</string>
+
+    <string name="bitcoin_intermediate_question_20">What is a Bitcoin double spend?</string>
+    <string name="bitcoin_intermediate_question_20_answer_1">Sending Bitcoin from one wallet to another</string>
+    <string name="bitcoin_intermediate_question_20_answer_2_correct">Trying to spend the same Bitcoin twice</string>
+    <string name="bitcoin_intermediate_question_20_answer_3">When a Mining node generates a false transaction to delay its competitors</string>
+    <string name="bitcoin_intermediate_question_20_answer_4">Generating two Bitcoins from mining fees</string>
+
+    <string name="bitcoin_intermediate_question_21">What is a Bitcoin Fork?</string>
+    <string name="bitcoin_intermediate_question_21_answer_1">A kitchen utensil made of Bitcoin</string>
+    <string name="bitcoin_intermediate_question_21_answer_2_correct">A Temporary Blockchain Lack of Consensus</string>
+    <string name="bitcoin_intermediate_question_21_answer_3">The Next Block in the Blockchain</string>
+    <string name="bitcoin_intermediate_question_21_answer_4">The Largest Transaction in the Block</string>
+
+    <string name="bitcoin_intermediate_question_22">What is a difficulty adjustment in Bitcoin?</string>
+    <string name="bitcoin_intermediate_question_22_answer_1">The method of rewarding miners according to their effort in proof of work</string>
+    <string name="bitcoin_intermediate_question_22_answer_2">A mining pool that increases its hashing power to over 51%</string>
+    <string name="bitcoin_intermediate_question_22_answer_3">A tool to decrease the block time below five minutes</string>
+    <string name="bitcoin_intermediate_question_22_answer_4_correct">A way of adjusting the proof of work requirement to keep the block time at 10 minutes</string>
+
+    <string name="bitcoin_intermediate_question_23">What is Mining in Bitcoin?</string>
+    <string name="bitcoin_intermediate_question_23_answer_1">The process of looking at data on the blockchain</string>
+    <string name="bitcoin_intermediate_question_23_answer_2">Keeping the blockchain on your computer</string>
+    <string name="bitcoin_intermediate_question_23_answer_3">Sending multiple transactions into the network (Flooding)</string>
+    <string name="bitcoin_intermediate_question_23_answer_4_correct">Securing the network through Proof of Work</string>
+
+    <string name="bitcoin_intermediate_question_24">What is the Genesis Block?</string>
+    <string name="bitcoin_intermediate_question_24_answer_1_correct">The first block in the Blockchain</string>
+    <string name="bitcoin_intermediate_question_24_answer_2">A famous block that hardcoded a hash of the book of Genesis into the Blockchain</string>
+    <string name="bitcoin_intermediate_question_24_answer_3">The first block after each block halving</string>
+    <string name="bitcoin_intermediate_question_24_answer_4">The first transaction in each block</string>
+
+    <string name="bitcoin_intermediate_question_25">What is a Bitcoin Block?</string>
+    <string name="bitcoin_intermediate_question_25_answer_1">The main community behind Bitcoin</string>
+    <string name="bitcoin_intermediate_question_25_answer_2">A virtual brick used in Minecraft</string>
+    <string name="bitcoin_intermediate_question_25_answer_3">A Bitcoin transaction</string>
+    <string name="bitcoin_intermediate_question_25_answer_4_correct">A set of Bitcoin transactions</string>
+
+    <string name="bitcoin_intermediate_question_26">What is a Coinbase or Generation Transaction?</string>
+    <string name="bitcoin_intermediate_question_26_answer_1_correct">The reward miners get for solving a block</string>
+    <string name="bitcoin_intermediate_question_26_answer_2">The largest transaction in a block</string>
+    <string name="bitcoin_intermediate_question_26_answer_3">The average time for each Bitcoin transaction to be sent</string>
+    <string name="bitcoin_intermediate_question_26_answer_4">The last transaction to be included in a block</string>
+
+    <string name="bitcoin_intermediate_question_27">Why is mining becoming centralised?</string>
+    <string name="bitcoin_intermediate_question_27_answer_1_correct">Economies of Scale &amp; Moore\'s Law</string>
+    <string name="bitcoin_intermediate_question_27_answer_2">Government Regulation</string>
+    <string name="bitcoin_intermediate_question_27_answer_3">The Bitcoin Foundation\'s guidelines</string>
+    <string name="bitcoin_intermediate_question_27_answer_4">The Blockchain getting smaller</string>
+
+    <string name="bitcoin_intermediate_question_28">What is Proof of Work?</string>
+    <string name="bitcoin_intermediate_question_28_answer_1">A way of proving that Bitcoins have been sent and received from your wallet</string>
+    <string name="bitcoin_intermediate_question_28_answer_2">A tool used in mining to generate the next transaction</string>
+    <string name="bitcoin_intermediate_question_28_answer_3_correct">The competition between miners to find the correct hash</string>
+    <string name="bitcoin_intermediate_question_28_answer_4">The competition between miners to not fully disclose transactions</string>
+
+    <string name="bitcoin_intermediate_question_29">What is Cold Storage?</string>
+    <string name="bitcoin_intermediate_question_29_answer_1">Switching your phone off as you make a transaction</string>
+    <string name="bitcoin_intermediate_question_29_answer_2">Running a Bitcoin node offline</string>
+    <string name="bitcoin_intermediate_question_29_answer_3">Cooling your mining equipment with extra fans to stop over heating</string>
+    <string name="bitcoin_intermediate_question_29_answer_4_correct">Storing your Private key offline</string>
+
+    <string name="bitcoin_intermediate_question_30">What is a Premine?</string>
+    <string name="bitcoin_intermediate_question_30_answer_1">A way of confirming a transaction before it has been sent to the network</string>
+    <string name="bitcoin_intermediate_question_30_answer_2">Miners starting to mine a block before the last block has finished</string>
+    <string name="bitcoin_intermediate_question_30_answer_3_correct">A way of allocating crypto currency prior to public release and is generally frowned upon</string>
+    <string name="bitcoin_intermediate_question_30_answer_4">A way of generating crypto currency through mining many cryptos at once</string>
+
+    <string name="bitcoin_intermediate_question_31">How long is a Bitcoin Block?</string>
+    <string name="bitcoin_intermediate_question_31_answer_1">660 Seconds</string>
+    <string name="bitcoin_intermediate_question_31_answer_2_">10 Minutes</string>
+    <string name="bitcoin_intermediate_question_31_answer_3">As long as a piece of string</string>
+    <string name="bitcoin_intermediate_question_31_answer_4_correct">Generally 10 minutes</string>
+
+</resources>

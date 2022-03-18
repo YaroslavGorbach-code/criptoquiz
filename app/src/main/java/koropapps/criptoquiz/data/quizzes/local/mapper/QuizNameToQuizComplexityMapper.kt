@@ -8,6 +8,7 @@ class QuizNameToQuizComplexityMapper() {
         return when (name) {
             QuizName.NONE -> QuizComplexity.EASY
             QuizName.WHAT_D_Y_KNOW_ABOUT_BLOCKCHAIN -> QuizComplexity.MIDDLE
+            QuizName.TEST -> QuizComplexity.EASY
         }
     }
 }

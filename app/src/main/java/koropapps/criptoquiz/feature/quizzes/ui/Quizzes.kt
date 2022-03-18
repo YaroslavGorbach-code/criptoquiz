@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
-import koropapps.criptoquiz.common_ui.theme.CriptoTheme
+import koropapps.criptoquiz.common_ui.theme.CryptoTheme
 import koropapps.criptoquiz.data.quizzes.local.model.Quiz
 import koropapps.criptoquiz.feature.quizzes.model.QuizzesAction
 import koropapps.criptoquiz.feature.quizzes.model.QuizzesUiMessage
@@ -58,10 +58,8 @@ internal fun Quizzes(
 
     LazyColumn {
         items(state.quizzes) { quiz ->
-            QuizItem(quiz = quiz) { isAvailable ->
-                if (isAvailable){
-                    actioner(QuizzesAction.OpenDescription(quiz))
-                }
+            QuizItem(quiz = quiz) {
+                actioner(QuizzesAction.OpenDescription(quiz))
             }
         }
     }
@@ -71,7 +69,7 @@ internal fun Quizzes(
 @Preview(showBackground = true)
 @Composable
 fun ExercisesPreview() {
-    CriptoTheme {
+    CryptoTheme {
         Quizzes(
             state = QuizzesViewState(),
             onMessageShown = {},

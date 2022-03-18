@@ -1,15 +1,14 @@
 package koropapps.criptoquiz.data.quizzes.local.mapper
 
-import android.app.Application
-import android.content.Context
-import dagger.hilt.android.qualifiers.ApplicationContext
+import koropapps.criptoquiz.R
 import koropapps.criptoquiz.data.quizzes.local.model.QuizName
 
-class QuizNameToShortDescriptionMapper(private val context: Context) {
-    fun map(name: QuizName): String {
+class QuizNameToShortDescriptionMapper {
+    fun map(name: QuizName): Int {
         return when (name) {
-            QuizName.NONE -> ""
-            QuizName.WHAT_D_Y_KNOW_ABOUT_BLOCKCHAIN -> "test"
+            QuizName.NONE -> R.string.empty
+            QuizName.WHAT_D_Y_KNOW_ABOUT_BLOCKCHAIN -> R.string.description_test
+            QuizName.TEST -> R.string.description_test
         }
     }
 }

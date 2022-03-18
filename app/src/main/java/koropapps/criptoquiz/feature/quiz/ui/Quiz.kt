@@ -1,26 +1,25 @@
-package koropapps.criptoquiz.feature.decription.ui
+package koropapps.criptoquiz.feature.quiz.ui
 
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
-import koropapps.criptoquiz.common_ui.theme.CriptoTheme
+import koropapps.criptoquiz.common_ui.theme.CryptoTheme
 import koropapps.criptoquiz.data.quizzes.local.model.Quiz
 import koropapps.criptoquiz.data.quizzes.local.model.QuizName
-import koropapps.criptoquiz.feature.decription.model.DescriptionAction
-import koropapps.criptoquiz.feature.decription.model.DescriptionUiMessage
-import koropapps.criptoquiz.feature.decription.model.DescriptionViewState
-import koropapps.criptoquiz.feature.decription.presentation.DescriptionViewModel
-import koropapps.criptoquiz.feature.quizzes.model.QuizzesViewState
+import koropapps.criptoquiz.feature.quiz.model.QuizAction
+import koropapps.criptoquiz.feature.quiz.model.QuizUiMessage
+import koropapps.criptoquiz.feature.quiz.model.QuizViewState
+import koropapps.criptoquiz.feature.quiz.presentation.QuizViewModel
 
 @ExperimentalMaterialApi
 @Composable
-fun Description(
+fun Quiz(
     quizName: QuizName,
     openQuiz: (quiz: Quiz) -> Unit,
 ) {
-    Description(
+    Quiz(
         viewModel = hiltViewModel(),
         openQuiz = openQuiz,
     )
@@ -28,13 +27,13 @@ fun Description(
 
 @ExperimentalMaterialApi
 @Composable
-internal fun Description(
-    viewModel: DescriptionViewModel,
+internal fun Quiz(
+    viewModel: QuizViewModel,
     openQuiz: (quiz: Quiz) -> Unit,
 ) {
     val viewState = viewModel.state.collectAsState()
 
-    Description(
+    Quiz(
         state = viewState.value,
         onMessageShown = viewModel::clearMessage,
         actioner = viewModel::submitAction,
@@ -43,14 +42,14 @@ internal fun Description(
 
 @ExperimentalMaterialApi
 @Composable
-internal fun Description(
-    state: DescriptionViewState,
-    actioner: (DescriptionAction) -> Unit,
+internal fun Quiz(
+    state: QuizViewState,
+    actioner: (QuizAction) -> Unit,
     onMessageShown: (id: Long) -> Unit,
 ) {
     state.message?.let { uiMessage ->
         when (uiMessage.message) {
-            is DescriptionUiMessage.OpenQuiz -> {
+            is QuizUiMessage.OpenQuiz -> {
 
             }
         }
@@ -63,9 +62,9 @@ internal fun Description(
 @Preview(showBackground = true)
 @Composable
 fun ExercisesPreview() {
-    CriptoTheme {
-        Description(
-            state = DescriptionViewState(),
+    CryptoTheme {
+        Quiz(
+            state = QuizViewState(),
             onMessageShown = {},
             actioner = {}
         )

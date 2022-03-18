@@ -9,6 +9,7 @@ class QuestionsFactory {
         return when (name) {
             QuizName.NONE -> emptyList()
             QuizName.WHAT_D_Y_KNOW_ABOUT_BLOCKCHAIN -> emptyList()
+            QuizName.TEST -> emptyList()
         }
     }
 }

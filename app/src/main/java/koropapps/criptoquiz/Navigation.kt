@@ -1,6 +1,5 @@
 package koropapps.criptoquiz
 
-import android.util.Log
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.runtime.Composable
@@ -10,7 +9,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
 import koropapps.criptoquiz.data.quizzes.local.model.QuizName
-import koropapps.criptoquiz.feature.decription.ui.Description
+import koropapps.criptoquiz.feature.quiz.ui.Quiz
 import koropapps.criptoquiz.feature.quizzes.ui.Quizzes
 import kotlinx.coroutines.InternalCoroutinesApi
 
@@ -27,7 +26,7 @@ private sealed class LeafScreen(
 
     object Quizzes : LeafScreen("Quizzes")
 
-    object Description : LeafScreen("Description/{${QUIZ_NAME_ARG}}") {
+    object Quiz : LeafScreen("Description/{${QUIZ_NAME_ARG}}") {
         fun createRoute(root: Screen, quizName: QuizName): String {
             return "${root.route}/Description/$quizName"
         }
@@ -74,7 +73,7 @@ private fun NavGraphBuilder.addQuizzes(
     composable(LeafScreen.Quizzes.createRoute(root)) {
         Quizzes(openDescription = { quiz ->
             navController.navigate(
-                LeafScreen.Description.createRoute(
+                LeafScreen.Quiz.createRoute(
                     root = root,
                     quizName = quiz.name
                 )
@@ -90,14 +89,14 @@ private fun NavGraphBuilder.addDescription(
     root: Screen,
 ) {
     composable(
-        LeafScreen.Description.createRoute(root), arguments = listOf(
+        LeafScreen.Quiz.createRoute(root), arguments = listOf(
             navArgument(QUIZ_NAME_ARG) {
                 type = NavType.EnumType(QuizName::class.java)
             })
     ) { backStackEntry ->
         val quizName = backStackEntry.arguments?.getSerializable(QUIZ_NAME_ARG) as QuizName
 
-        Description(openQuiz = {}, quizName = quizName)
+        Quiz(openQuiz = {}, quizName = quizName)
     }
 }
 

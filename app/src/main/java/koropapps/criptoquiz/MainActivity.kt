@@ -10,7 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
-import koropapps.criptoquiz.common_ui.theme.CriptoTheme
+import koropapps.criptoquiz.common_ui.theme.CryptoTheme
 import kotlinx.coroutines.InternalCoroutinesApi
 
 @InternalCoroutinesApi
@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            CriptoTheme {
+            CryptoTheme {
                 Surface {
                     AppNavigation(navController = rememberNavController())
                 }
@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
 @Preview(showBackground = true)
 @Composable
 fun DefaultPreview() {
-    CriptoTheme {
+    CryptoTheme {
 
     }
 }
