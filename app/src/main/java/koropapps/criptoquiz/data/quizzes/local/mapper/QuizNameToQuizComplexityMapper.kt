@@ -6,9 +6,8 @@ import koropapps.criptoquiz.data.quizzes.local.model.QuizName
 class QuizNameToQuizComplexityMapper() {
     fun map(name: QuizName): QuizComplexity {
         return when (name) {
-            QuizName.NONE -> QuizComplexity.EASY
-            QuizName.WHAT_D_Y_KNOW_ABOUT_BLOCKCHAIN -> QuizComplexity.MIDDLE
-            QuizName.TEST -> QuizComplexity.EASY
+            QuizName.BITCOIN_BEGINNER -> QuizComplexity.EASY
+            QuizName.TEST -> QuizComplexity.MIDDLE
         }
     }
 }

@@ -1,3 +1,3 @@
 package koropapps.criptoquiz.data.quizzes.local.model
 
-data class Question(val question: String, val answers: List<String>, val correctAnswer: String)
+data class Question(val questionId: Int, val answerIds: List<Int>, val correctAnswerId: Int)

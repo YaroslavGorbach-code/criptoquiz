@@ -6,9 +6,8 @@ import koropapps.criptoquiz.data.quizzes.local.model.QuizName
 class QuizNameToShortDescriptionMapper {
     fun map(name: QuizName): Int {
         return when (name) {
-            QuizName.NONE -> R.string.empty
-            QuizName.WHAT_D_Y_KNOW_ABOUT_BLOCKCHAIN -> R.string.description_test
-            QuizName.TEST -> R.string.description_test
+            QuizName.BITCOIN_BEGINNER -> R.string.bitcoin_beginner_description
+            QuizName.TEST ->  R.string.bitcoin_beginner_description
         }
     }
 }

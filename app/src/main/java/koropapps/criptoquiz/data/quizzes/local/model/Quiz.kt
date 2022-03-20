@@ -13,7 +13,7 @@ data class Quiz(
     companion object {
         val Test = Quiz(
             QuizName.TEST,
-            R.string.description_test,
+            R.string.empty,
             50,
             emptyList(),
             complexity = QuizComplexity.EASY

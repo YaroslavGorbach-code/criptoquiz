@@ -40,7 +40,7 @@
     <string name="bitcoin_beginer_question_7_answer_1">Middle Earth</string>
     <string name="bitcoin_beginer_question_7_answer_2">A Bank, the Post Office or any public services building</string>
     <string name="bitcoin_beginer_question_7_answer_3_correct">An online exchange, off friends or at a Bitcoin ATM</string>
-    <string name="bitcoin_beginer_question_7_answer_4">You can\'t as it doesn't exist</string>
+    <string name="bitcoin_beginer_question_7_answer_4">You can\'t as it doesn\'t exist</string>
 
     <string name="bitcoin_beginer_question_8">Who can contribute to the Bitcoin Protocol?</string>
     <string name="bitcoin_beginer_question_8_answer_1">Satoshi Nakomoto</string>
@@ -52,7 +52,7 @@
     <string name="bitcoin_beginer_question_9_answer_1">Bitcoin Global Exchange</string>
     <string name="bitcoin_beginer_question_9_answer_2">Bitcoin Bible</string>
     <string name="bitcoin_beginer_question_9_answer_3_correct">Mt Gox</string>
-    <string name="bitcoin_beginer_question_9_answer_4">Coin\'o'mart</string>
+    <string name="bitcoin_beginer_question_9_answer_4">Coin\'o\'mart</string>
 
     <string name="bitcoin_beginer_question_10">Who was the CEO of Mt Gox?</string>
     <string name="bitcoin_beginer_question_10_answer_1_correct">Mark Karpeles</string>

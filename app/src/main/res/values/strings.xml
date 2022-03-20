@@ -4,9 +4,9 @@
     <string name="minutes">Минут:</string>
     <string name="empty" />
     <string name="start_quiz">START QUIZ</string>
-    <string name="test_quiz_name">Test quiz name</string>
-    <string name="description_test">
-        Test descriptionTest description Test description Test description
-        Test descriptionTest description Test description Test description
+    <string name="bitcoin_beginner_name">Bitcoin beginner</string>
+    <string name="bitcoin_beginner_description">
+       Test your bitcoin skills in our easy newbie quiz on Bitcoin and learn more about this exciting new currency!
     </string>
+    <string name="quizzes_app_bar_text">Test your Bitcoin and Crypto Knowledge</string>
 </resources>
