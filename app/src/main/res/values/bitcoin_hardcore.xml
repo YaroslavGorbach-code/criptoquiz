@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="bitcoin_hardcore_question_1">What is included in a Block Hash?</string>
+    <string name="bitcoin_hardcore_question_1_answer_1">All the transactions combined end to end separated by commas</string>
+    <string name="bitcoin_hardcore_question_1_answer_2">The timestamp when all the miners started working on the block</string>
+    <string name="bitcoin_hardcore_question_1_answer_3">The next block hash in the blockchain</string>
+    <string name="bitcoin_hardcore_question_1_answer_4_correct">The nonce used to achieve the difficulty required</string>
+
+    <string name="bitcoin_hardcore_question_2">What is the maximum number of block reward reductions allowed in the Bitcoin Protocol?</string>
+    <string name="bitcoin_hardcore_question_2_answer_1">10</string>
+    <string name="bitcoin_hardcore_question_2_answer_2_correct">33</string>
+    <string name="bitcoin_hardcore_question_2_answer_3">128</string>
+    <string name="bitcoin_hardcore_question_2_answer_4">32</string>
+
+    <string name="bitcoin_hardcore_question_3">What does Satoshi Nakomoto loosely Translate to?</string>
+    <string name="bitcoin_hardcore_question_3_answer_1">Wise Future Thought</string>
+    <string name="bitcoin_hardcore_question_3_answer_2">Inside Teacher Origin</string>
+    <string name="bitcoin_hardcore_question_3_answer_3">Balanced Inside Origin</string>
+    <string name="bitcoin_hardcore_question_3_answer_4_correct">Wise Inside Foundation</string>
+
+    <string name="bitcoin_hardcore_question_4">What is a dust transaction?</string>
+    <string name="bitcoin_hardcore_question_4_answer_1">A small micro transaction</string>
+    <string name="bitcoin_hardcore_question_4_answer_2">A way of returning Bitcoin in the case of a refund</string>
+    <string name="bitcoin_hardcore_question_4_answer_3_correct">A transaction with an amount so small most miners will not include it in a block</string>
+    <string name="bitcoin_hardcore_question_4_answer_4">An improperly formed transaction that is discarded as rubbish</string>
+
+    <string name="bitcoin_hardcore_question_5">What are Bitcoin Options?</string>
+    <string name="bitcoin_hardcore_question_5_answer_1_correct">The right to buy or sell a specific amount of Bitcoin at a specific price on or until a specific future date</string>
+    <string name="bitcoin_hardcore_question_5_answer_2">The right to sell your mining computer for Bitcoins</string>
+    <string name="bitcoin_hardcore_question_5_answer_3">The ability to choose which exchange to sell or buy your bitcoin on</string>
+    <string name="bitcoin_hardcore_question_5_answer_4">The right to buy or sell a specific amount of Bitcoin at a specific price on any future date</string>
+
+    <string name="bitcoin_hardcore_question_6">How much Bitcoin was reportedly stolen from Mt Gox?</string>
+    <string name="bitcoin_hardcore_question_6_answer_1_correct">744,000</string>
+    <string name="bitcoin_hardcore_question_6_answer_2">812,000</string>
+    <string name="bitcoin_hardcore_question_6_answer_3">153,000</string>
+    <string name="bitcoin_hardcore_question_6_answer_4">923,000</string>
+
+    <string name="bitcoin_hardcore_question_7">What is a Private Key in Bitcoin?</string>
+    <string name="bitcoin_hardcore_question_7_answer_1">A point on the elliptic curve</string>
+    <string name="bitcoin_hardcore_question_7_answer_2_correct">A multiplier of the generator point on the elliptic curve</string>
+    <string name="bitcoin_hardcore_question_7_answer_3">The password generated from the public key through modular arithmetic and SHA-256</string>
+    <string name="bitcoin_hardcore_question_7_answer_4">A mode of turning off your wallet so no one can see your transaction history</string>
+
+    <string name="bitcoin_hardcore_question_8">What is a GH/s?</string>
+    <string name="bitcoin_hardcore_question_8_answer_1">1000 hashes per second</string>
+    <string name="bitcoin_hardcore_question_8_answer_2">1,000,000 hashes per second</string>
+    <string name="bitcoin_hardcore_question_8_answer_3_correct">1,000,000,000 hashes per second</string>
+    <string name="bitcoin_hardcore_question_8_answer_4">1,000,000,000,000 hashes per second</string>
+
+    <string name="bitcoin_hardcore_question_9">How many Bitcoins will there ever be?</string>
+    <string name="bitcoin_hardcore_question_9_answer_1">20900000.12 in July 2140</string>
+    <string name="bitcoin_hardcore_question_9_answer_2">20900000.12 in June 2140</string>
+    <string name="bitcoin_hardcore_question_9_answer_3_correct">20999999.97 in 2140</string>
+    <string name="bitcoin_hardcore_question_9_answer_4">21.11111 Million in July 2140</string>
+
+    <string name="bitcoin_hardcore_question_10">What is not included in a Block Hash?</string>
+    <string name="bitcoin_hardcore_question_10_answer_1_correct">The largest transaction in the block</string>
+    <string name="bitcoin_hardcore_question_10_answer_2">The difficulty target</string>
+    <string name="bitcoin_hardcore_question_10_answer_3">The Bitcoin version number</string>
+    <string name="bitcoin_hardcore_question_10_answer_4">The Merkle root of all the transactions</string>
+
+    <string name="bitcoin_hardcore_question_11">What is a digital signature in Bitcoin?</string>
+    <string name="bitcoin_hardcore_question_11_answer_1">The method of creating a Public Key from a Private Key</string>
+    <string name="bitcoin_hardcore_question_11_answer_2">Checking your transaction is on the blockchain</string>
+    <string name="bitcoin_hardcore_question_11_answer_3">Using your Public Key to sign a transaction</string>
+    <string name="bitcoin_hardcore_question_11_answer_4_correct">Using your Private Key to sign a transaction</string>
+
+    <string name="bitcoin_hardcore_question_12">Which of the following is true for a Bitcoin transaction?</string>
+    <string name="bitcoin_hardcore_question_12_answer_1">The input has a value and the output does not</string>
+    <string name="bitcoin_hardcore_question_12_answer_2">The transaction size is generally greater than 1MB</string>
+    <string name="bitcoin_hardcore_question_12_answer_3_correct">It typically references previous transaction outputs as new transaction inputs</string>
+    <string name="bitcoin_hardcore_question_12_answer_4">The unspent transaction amount automatically comes back to the address that signed the transaction</string>
+
+    <string name="bitcoin_hardcore_question_13">What did Satoshi Nakomoto hard code into the Genesis block?</string>
+    <string name="bitcoin_hardcore_question_13_answer_1">Money is only a tool. It will take you wherever you wish, but it will not replace you as the driver.</string>
+    <string name="bitcoin_hardcore_question_13_answer_2">Men make counterfeit money; in many more cases, money makes counterfeit men.</string>
+    <string name="bitcoin_hardcore_question_13_answer_3">A wise man should have money in his head, but not in his heart.</string>
+    <string name="bitcoin_hardcore_question_13_answer_4_correct">The Times 03/Jan/2009 Chancellor on brink of second bailout for banks.</string>
+
+    <string name="bitcoin_hardcore_question_14">What is a Merkle Root/Tree?</string>
+    <string name="bitcoin_hardcore_question_14_answer_1">The square root of the number of transactions</string>
+    <string name="bitcoin_hardcore_question_14_answer_2_correct">An efficient way of storing and proving transactions were included in a block</string>
+    <string name="bitcoin_hardcore_question_14_answer_3">An algorithm used to send transactions</string>
+    <string name="bitcoin_hardcore_question_14_answer_4">The birthplace of the German Chancellor.</string>
+
+    <string name="bitcoin_hardcore_question_15">What is the UTXO?</string>
+    <string name="bitcoin_hardcore_question_15_answer_1">The protocol for sending Bitcoins to a Company</string>
+    <string name="bitcoin_hardcore_question_15_answer_2">A database for storing Bitcoin Dust Transactions</string>
+    <string name="bitcoin_hardcore_question_15_answer_3_correct">A database of Unspent Transaction Outputs</string>
+    <string name="bitcoin_hardcore_question_15_answer_4">The centralised database miners use to verify transactions</string>
+
+    <string name="bitcoin_hardcore_question_16">What is true of the ScriptSig and ScriptPubKey functions?</string>
+    <string name="bitcoin_hardcore_question_16_answer_1">The stack based language is Turing Complete</string>
+    <string name="bitcoin_hardcore_question_16_answer_2">The ScriptSig contains the Public Key from which the transaction is to be spent</string>
+    <string name="bitcoin_hardcore_question_16_answer_3">The ScriptPubKey is the private key unlocking the transaction</string>
+    <string name="bitcoin_hardcore_question_16_answer_4_correct">ScriptSig is the unlocking part of the transaction</string>
+
+    <string name="bitcoin_hardcore_question_17">What is Elliptic Curve Cryptography?</string>
+    <string name="bitcoin_hardcore_question_17_answer_1">The method used to send Bitcoins to another wallet without the Blockchain</string>
+    <string name="bitcoin_hardcore_question_17_answer_2_correct">A branch of mathematics used to generate public keys from private keys</string>
+    <string name="bitcoin_hardcore_question_17_answer_3">A way of hiding your transaction history on the blockchain</string>
+    <string name="bitcoin_hardcore_question_17_answer_4">The maths used to generate your private key from your public key</string>
+
+    <string name="bitcoin_hardcore_question_18">What is a Bloom filter?</string>
+    <string name="bitcoin_hardcore_question_18_answer_1_correct">A way of lowering the amount of data mobile wallets need to stay up to date</string>
+    <string name="bitcoin_hardcore_question_18_answer_2">A micro transaction service for music streaming using Bitcoin</string>
+    <string name="bitcoin_hardcore_question_18_answer_3">A way of sending Bitcoins and verifying the address through proof of address certificates</string>
+    <string name="bitcoin_hardcore_question_18_answer_4">A full Bitcoin node verifying incoming transactions</string>
+
+    <string name="bitcoin_hardcore_question_19">What is selfish mining?</string>
+    <string name="bitcoin_hardcore_question_19_answer_1">Joining a pool and not sharing the rewards when you win a block</string>
+    <string name="bitcoin_hardcore_question_19_answer_2">Mining a Crypto currency where you hold 51% of the hashing power</string>
+    <string name="bitcoin_hardcore_question_19_answer_3_correct">Not releasing blocks you have mined to the rest of the network</string>
+    <string name="bitcoin_hardcore_question_19_answer_4">Falsifying transaction records to other nodes to give your miner an advantage</string>
+
+    <string name="bitcoin_hardcore_question_20">What is a nonce?</string>
+    <string name="bitcoin_hardcore_question_20_answer_1">The transaction id number</string>
+    <string name="bitcoin_hardcore_question_20_answer_2">A miners ASIC chip array</string>
+    <string name="bitcoin_hardcore_question_20_answer_3">The generator point used in elliptic curve cryptography</string>
+    <string name="bitcoin_hardcore_question_20_answer_4_correct">The number miners run through to generate a correct hash</string>
+
+    <string name="bitcoin_hardcore_question_21">Which of these is not a valid Bitcoin standard transaction type?</string>
+    <string name="bitcoin_hardcore_question_21_answer_1">TX_PUBKEY</string>
+    <string name="bitcoin_hardcore_question_21_answer_2">TX_PUBKEYHASH</string>
+    <string name="bitcoin_hardcore_question_21_answer_3">TX_SCRIPTHASH</string>
+    <string name="bitcoin_hardcore_question_21_answer_4_correct">TX_SCRIPTPUBKEYHASH</string>
+
+    <string name="bitcoin_hardcore_question_22">Where is Bitcoin Illegal?</string>
+    <string name="bitcoin_hardcore_question_22_answer_1">Everywhere</string>
+    <string name="bitcoin_hardcore_question_22_answer_2">United States</string>
+    <string name="bitcoin_hardcore_question_22_answer_3">China</string>
+    <string name="bitcoin_hardcore_question_22_answer_4_correct">Ecuador</string>
+
+    <string name="bitcoin_hardcore_question_23">Why does Litecoin use Scrypt instead of SHA-256?</string>
+    <string name="bitcoin_hardcore_question_23_answer_1">Because Scrypt is faster</string>
+    <string name="bitcoin_hardcore_question_23_answer_2_correct">Because scrypt is memory hard and removes the advantage that ASIC chips have so lowering centralisation</string>
+    <string name="bitcoin_hardcore_question_23_answer_3">Because scrypt is memory soft and removes the advantage that ASIC chips have so increasing centralisation</string>
+    <string name="bitcoin_hardcore_question_23_answer_4">Because scrypt is memory hard and removes the advantage that ASIC chips have so increasing centralisation</string>
+
+    <string name="bitcoin_hardcore_question_24">What are Bitcoin Futures?</string>
+    <string name="bitcoin_hardcore_question_24_answer_1">Price prediction horoscopes for Bitcoin</string>
+    <string name="bitcoin_hardcore_question_24_answer_2">A financial instrument giving you the right to always buy Bitcoin at a cheaper price</string>
+    <string name="bitcoin_hardcore_question_24_answer_3_correct">A financial instrument giving you the right to buy a quantity of Bitcoin at a set price at a given future date</string>
+    <string name="bitcoin_hardcore_question_24_answer_4">A financial instrument giving you the right to buy a quantity of Bitcoin at a set price at a given date that is at least one year in the future</string>
+
+    <string name="bitcoin_hardcore_question_25">What is a payment distribution method for a mining pool?</string>
+    <string name="bitcoin_hardcore_question_25_answer_1">Estimated Moving Average</string>
+    <string name="bitcoin_hardcore_question_25_answer_2_correct">Pay per Last N Shares</string>
+    <string name="bitcoin_hardcore_question_25_answer_3">Triple Geometric Method</string>
+    <string name="bitcoin_hardcore_question_25_answer_4">Fibonacci Selection</string>
+
+    <string name="bitcoin_hardcore_question_26">What is the name of the research paper that brought Bitcoin to the World</string>
+    <string name="bitcoin_hardcore_question_26_answer_1">Bitcoin: a decentralised electronic cash system</string>
+    <string name="bitcoin_hardcore_question_26_answer_2_correct">Bitcoin: a peer to peer electronic cash system</string>
+    <string name="bitcoin_hardcore_question_26_answer_3">Bitcoin: a peer to peer digital cash system</string>
+    <string name="bitcoin_hardcore_question_26_answer_4">Bitcoin: a peer to peer digital money system</string>
+
+    <string name="bitcoin_hardcore_question_27">What is the History of Bitcoin Mining in terms of Hardware use Chronologically</string>
+    <string name="bitcoin_hardcore_question_27_answer_1_correct">CPU - GPU - FPGA - ASIC</string>
+    <string name="bitcoin_hardcore_question_27_answer_2">GPU - CPU - FPGA - ASIC</string>
+    <string name="bitcoin_hardcore_question_27_answer_3">GPU - CPU - ASIC - FPGA</string>
+    <string name="bitcoin_hardcore_question_27_answer_4">ASIC - FPGA - CPU- GPU</string>
+</resources>

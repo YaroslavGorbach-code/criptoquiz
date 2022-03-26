@@ -5,7 +5,6 @@ import koropapps.criptoquiz.R
 data class Quiz(
     val name: QuizName,
     val descriptionRes: Int,
-    val progress: Int = 0,
     val questions: List<Question>,
     val isCompleted: Boolean = false,
     val complexity: QuizComplexity
@@ -14,7 +13,6 @@ data class Quiz(
         val Test = Quiz(
             QuizName.TEST,
             R.string.empty,
-            50,
             emptyList(),
             complexity = QuizComplexity.EASY
         )

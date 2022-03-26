@@ -96,7 +96,9 @@ private fun NavGraphBuilder.addDescription(
     ) { backStackEntry ->
         val quizName = backStackEntry.arguments?.getSerializable(QUIZ_NAME_ARG) as QuizName
 
-        Quiz(openQuiz = {}, quizName = quizName)
+        Quiz {
+            navController.popBackStack()
+        }
     }
 }
 
