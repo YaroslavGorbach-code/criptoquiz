@@ -27,18 +27,19 @@ import koropapps.criptoquiz.common_ui.theme.OnSurface
 import koropapps.criptoquiz.common_ui.theme.PrimaryText
 import koropapps.criptoquiz.common_ui.ui.RoundedLinearProgressIndicator
 import koropapps.criptoquiz.feature.quiz.model.QuizAction
-import koropapps.criptoquiz.feature.quiz.model.QuizUiMessage
 import koropapps.criptoquiz.feature.quiz.model.QuizViewState
 import koropapps.criptoquiz.feature.quiz.presentation.QuizViewModel
 
 @ExperimentalMaterialApi
 @Composable
 fun Quiz(
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onResult: () -> Unit,
 ) {
     Quiz(
         viewModel = hiltViewModel(),
-        onBack = onBack
+        onBack = onBack,
+        onResult = onResult
     )
 }
 
@@ -46,15 +47,16 @@ fun Quiz(
 @Composable
 internal fun Quiz(
     viewModel: QuizViewModel,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onResult: () -> Unit
 ) {
     val viewState = viewModel.state.collectAsState()
 
     Quiz(
         state = viewState.value,
-        onMessageShown = viewModel::clearMessage,
         actioner = viewModel::submitAction,
-        onBack = onBack
+        onBack = onBack,
+        onResult = onResult
     )
 }
 
@@ -63,21 +65,12 @@ internal fun Quiz(
 internal fun Quiz(
     state: QuizViewState,
     actioner: (QuizAction) -> Unit,
-    onMessageShown: (id: Long) -> Unit,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onResult: () -> Unit
 ) {
-    state.message?.let { uiMessage ->
-        when (uiMessage.message) {
-            is QuizUiMessage.OpenQuiz -> {
-            }
-            QuizUiMessage.OnBack -> onBack()
-        }
-        onMessageShown(uiMessage.id)
-    }
-
     Column {
         Toolbar(state.quiz.name.resId) {
-            actioner(QuizAction.OnBack)
+            onBack()
         }
 
         Spacer(
@@ -105,6 +98,9 @@ internal fun Quiz(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(20.dp)
+                    .clickable {
+                        onResult.invoke()
+                    }
             )
         }
 
@@ -114,7 +110,12 @@ internal fun Quiz(
                 .height(40.dp)
         )
 
-        Questions(state = state, onAnswer = { actioner(QuizAction.Answer(it)) })
+        if (state.isFinish && state.hasNeedToNavigateToResult) {
+            onResult.invoke()
+            actioner(QuizAction.NavigateToResult)
+        } else {
+            Questions(state = state, actioner = actioner)
+        }
     }
 }
 
@@ -149,7 +150,7 @@ private fun Toolbar(stringId: Int, onIconClick: () -> Unit) {
 }
 
 @Composable
-private fun Questions(state: QuizViewState, onAnswer: (id: Int) -> Unit) {
+private fun Questions(state: QuizViewState, actioner: (QuizAction) -> Unit) {
     Column(
         modifier = Modifier
             .padding(16.dp)
@@ -171,9 +172,10 @@ private fun Questions(state: QuizViewState, onAnswer: (id: Int) -> Unit) {
 
             LazyColumn {
                 items(items = state.question.answerIds) { id ->
-                    AnswerItem(id, onAnswer::invoke)
+                    AnswerItem(id) { actioner(QuizAction.Answer(it)) }
                 }
             }
+
         }
     }
 }
@@ -185,9 +187,9 @@ fun ExercisesPreview() {
     CryptoTheme {
         Quiz(
             state = QuizViewState(),
-            onMessageShown = {},
             actioner = {},
-            onBack = {}
+            onBack = {},
+            onResult = {}
         )
     }
 }

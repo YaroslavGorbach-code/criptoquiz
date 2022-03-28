@@ -7,13 +7,11 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import koropapps.criptoquiz.QUIZ_NAME_ARG
 import koropapps.criptoquiz.bussines.GetQuestionsInteractor
 import koropapps.criptoquiz.bussines.GetQuizInteractor
-import koropapps.criptoquiz.common_ui.utill.UiMessage
-import koropapps.criptoquiz.common_ui.utill.UiMessageManager
+import koropapps.criptoquiz.bussines.SetResentAnswersInteractor
 import koropapps.criptoquiz.data.quizzes.local.model.Answer
 import koropapps.criptoquiz.data.quizzes.local.model.Question
 import koropapps.criptoquiz.data.quizzes.local.model.QuizName
 import koropapps.criptoquiz.feature.quiz.model.QuizAction
-import koropapps.criptoquiz.feature.quiz.model.QuizUiMessage
 import koropapps.criptoquiz.feature.quiz.model.QuizViewState
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
@@ -25,6 +23,7 @@ import javax.inject.Inject
 class QuizViewModel @Inject constructor(
     private val getQuizInteractor: GetQuizInteractor,
     private val getQuestionsInteractor: GetQuestionsInteractor,
+    private val setResentAnswersInteractor: SetResentAnswersInteractor,
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
@@ -32,24 +31,30 @@ class QuizViewModel @Inject constructor(
 
     private val pendingActions = MutableSharedFlow<QuizAction>()
 
-    private val uiMessageManager: UiMessageManager<QuizUiMessage> = UiMessageManager()
-
     private val questions: MutableStateFlow<List<Question>> = MutableStateFlow(emptyList())
 
-    private val answers: MutableStateFlow<MutableList<Answer>> = MutableStateFlow(ArrayList())
+    private val _answers: MutableStateFlow<MutableList<Answer>> = MutableStateFlow(ArrayList())
+
+    private val isNeedToNavigateToResult: MutableStateFlow<Boolean> = MutableStateFlow(true)
 
     val state: StateFlow<QuizViewState> = combine(
         getQuizInteractor(quizName),
-        uiMessageManager.message,
         questions,
-        answers,
-    ) { quiz, message, questions, answers ->
+        _answers,
+        isNeedToNavigateToResult,
+    ) { quiz, questions, answers, needToNavigate ->
+        setResentAnswersInteractor.invoke(answers = _answers.value)
+
         QuizViewState(
             quiz = quiz,
-            message = message,
             question = questions.firstOrNull(),
             answersSize = answers.size,
-            progress = calculateProgress(answersSize = answers.size, questionsSize = questions.size)
+            isFinish = questions.isEmpty(),
+            progress = calculateProgress(
+                answersSize = answers.size,
+                questionsSize = questions.size
+            ),
+            hasNeedToNavigateToResult = needToNavigate
         )
     }.stateIn(
         scope = viewModelScope,
@@ -65,22 +70,26 @@ class QuizViewModel @Inject constructor(
 
             pendingActions.collect { action ->
                 when (action) {
-                    QuizAction.OnBack -> uiMessageManager.emitMessage(
-                        UiMessage(QuizUiMessage.OnBack)
-                    )
                     is QuizAction.Answer -> {
-                        questions.update { questions ->
-                            questions.firstOrNull()?.let { question ->
-                                answers.update { answers ->
-                                    answers.add(question.getAnswer(action.answerId))
-                                    answers
-                                }
-                            }
-                            questions.drop(1)
-                        }
+                        answerQuestion(action.answerId)
+                    }
+                    QuizAction.NavigateToResult -> {
+                        isNeedToNavigateToResult.emit(false)
                     }
                 }
             }
+        }
+    }
+
+    private fun answerQuestion(answerId: Int) {
+        questions.update { questions ->
+            questions.firstOrNull()?.let { question ->
+                _answers.update { answers ->
+                    answers.add(question.getAnswer(answerId))
+                    answers
+                }
+            }
+            questions.drop(1)
         }
     }
 
@@ -93,11 +102,6 @@ class QuizViewModel @Inject constructor(
         }
     }
 
-    fun clearMessage(id: Long) {
-        viewModelScope.launch {
-            uiMessageManager.clearMessage(id)
-        }
-    }
 }
 
 

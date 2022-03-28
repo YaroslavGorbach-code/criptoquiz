@@ -11,6 +11,7 @@ import androidx.navigation.compose.navigation
 import koropapps.criptoquiz.data.quizzes.local.model.QuizName
 import koropapps.criptoquiz.feature.quiz.ui.Quiz
 import koropapps.criptoquiz.feature.quizzes.ui.Quizzes
+import koropapps.criptoquiz.feature.result.ui.Result
 import kotlinx.coroutines.InternalCoroutinesApi
 
 const val QUIZ_NAME_ARG = "EXERCISE_NAME_ARG"
@@ -24,11 +25,13 @@ private sealed class LeafScreen(
 ) {
     fun createRoute(root: Screen) = "${root.route}/$route"
 
-    object Quizzes : LeafScreen("Quizzes")
+    object QuizzesList : LeafScreen("QuizzesList")
 
-    object Quiz : LeafScreen("Description/{${QUIZ_NAME_ARG}}") {
+    object Result : LeafScreen("Result")
+
+    object Quiz : LeafScreen("Quiz/{${QUIZ_NAME_ARG}}") {
         fun createRoute(root: Screen, quizName: QuizName): String {
-            return "${root.route}/Description/$quizName"
+            return "${root.route}/Quiz/$quizName"
         }
     }
 }
@@ -58,10 +61,11 @@ private fun NavGraphBuilder.addQuizzesTopLevel(
 ) {
     navigation(
         route = Screen.Quizzes.route,
-        startDestination = LeafScreen.Quizzes.createRoute(Screen.Quizzes),
+        startDestination = LeafScreen.QuizzesList.createRoute(Screen.Quizzes),
     ) {
         addQuizzes(navController, Screen.Quizzes)
-        addDescription(navController, Screen.Quizzes)
+        addQuiz(navController, Screen.Quizzes)
+        addResult(navController, Screen.Quizzes)
     }
 }
 
@@ -70,7 +74,7 @@ private fun NavGraphBuilder.addQuizzes(
     navController: NavController,
     root: Screen,
 ) {
-    composable(LeafScreen.Quizzes.createRoute(root)) {
+    composable(LeafScreen.QuizzesList.createRoute(root)) {
         Quizzes(openDescription = { quiz ->
             navController.navigate(
                 LeafScreen.Quiz.createRoute(
@@ -84,7 +88,7 @@ private fun NavGraphBuilder.addQuizzes(
 
 
 @ExperimentalMaterialApi
-private fun NavGraphBuilder.addDescription(
+private fun NavGraphBuilder.addQuiz(
     navController: NavController,
     root: Screen,
 ) {
@@ -93,12 +97,27 @@ private fun NavGraphBuilder.addDescription(
             navArgument(QUIZ_NAME_ARG) {
                 type = NavType.EnumType(QuizName::class.java)
             })
-    ) { backStackEntry ->
-        val quizName = backStackEntry.arguments?.getSerializable(QUIZ_NAME_ARG) as QuizName
-
-        Quiz {
-            navController.popBackStack()
-        }
+    ) {
+        Quiz(onBack = { navController.popBackStack() },
+            onResult = {
+                navController.navigate(LeafScreen.Result.createRoute(root)) {
+                    popUpTo(LeafScreen.QuizzesList.createRoute(root = root)) {
+                        inclusive = false
+                    }
+                }
+            }
+        )
     }
 }
 
+@ExperimentalMaterialApi
+private fun NavGraphBuilder.addResult(
+    navController: NavController,
+    root: Screen,
+) {
+    composable(LeafScreen.Result.createRoute(root), arguments = emptyList()) {
+        Result {
+
+        }
+    }
+}

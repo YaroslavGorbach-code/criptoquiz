@@ -2,5 +2,5 @@ package koropapps.criptoquiz.feature.quiz.model
 
 sealed class QuizAction {
     class Answer(val answerId: Int) : QuizAction()
-    object OnBack : QuizAction()
+    object NavigateToResult: QuizAction()
 }
