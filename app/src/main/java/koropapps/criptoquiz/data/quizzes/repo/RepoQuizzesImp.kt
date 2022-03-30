@@ -1,5 +1,6 @@
 package koropapps.criptoquiz.data.quizzes.repo
 
+import android.util.Log
 import koropapps.criptoquiz.data.quizzes.local.factory.QuestionsFactory
 import koropapps.criptoquiz.data.quizzes.local.factory.QuizzesFactory
 import koropapps.criptoquiz.data.quizzes.local.mapper.QuizNameToQuizComplexityMapper
@@ -8,9 +9,13 @@ import koropapps.criptoquiz.data.quizzes.local.model.Answer
 import koropapps.criptoquiz.data.quizzes.local.model.Quiz
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class RepoQuizzesImp : RepoQuizzes {
+@Singleton
+class RepoQuizzesImp @Inject constructor() : RepoQuizzes {
     private val resentAnswers: MutableSet<Answer> = HashSet()
+
 
     override fun observe(): Flow<List<Quiz>> {
         return flowOf(

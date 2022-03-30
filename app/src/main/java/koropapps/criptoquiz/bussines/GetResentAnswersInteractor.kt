@@ -1,9 +1,12 @@
 package koropapps.criptoquiz.bussines
 
+import android.util.Log
 import koropapps.criptoquiz.data.quizzes.local.model.Answer
 import koropapps.criptoquiz.data.quizzes.repo.RepoQuizzes
 import javax.inject.Inject
 
 class GetResentAnswersInteractor @Inject constructor(private val repoQuizzes: RepoQuizzes) {
-    operator fun invoke(): List<Answer> = repoQuizzes.answers
+    operator fun invoke(): List<Answer>{
+        return repoQuizzes.answers
+    }
 }

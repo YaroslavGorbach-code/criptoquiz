@@ -2,6 +2,8 @@ package koropapps.criptoquiz.common_ui.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.BoxScope
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -13,7 +15,8 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 fun CircularProgressIndicatorWithContent(
-    modifier: Modifier,
+    modifier: Modifier = Modifier,
+    modifierProgress: Modifier = Modifier,
     progress: Float,
     strokeColor: Color = Color.Green,
     backgroundStrokeColor: Color = Color.LightGray,
@@ -28,10 +31,10 @@ fun CircularProgressIndicatorWithContent(
                 progress = progress,
                 color = strokeColor,
                 strokeWidth = strokeWidth,
-                modifier = Modifier.drawBehind {
+                modifier = modifierProgress.drawBehind {
                     drawCircle(
                         color = backgroundStrokeColor,
-                        radius = (size.maxDimension / 2.0f) - (strokeWidth.value),
+                        radius = (size.maxDimension / 2.0f) - backgroundStrokeWidth.value * 1.5f,
                         style = Stroke(width = backgroundStrokeWidth.toPx())
                     )
                 }

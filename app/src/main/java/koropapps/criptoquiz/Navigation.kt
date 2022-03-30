@@ -86,7 +86,6 @@ private fun NavGraphBuilder.addQuizzes(
     }
 }
 
-
 @ExperimentalMaterialApi
 private fun NavGraphBuilder.addQuiz(
     navController: NavController,
@@ -110,14 +109,17 @@ private fun NavGraphBuilder.addQuiz(
     }
 }
 
+@InternalCoroutinesApi
 @ExperimentalMaterialApi
 private fun NavGraphBuilder.addResult(
     navController: NavController,
     root: Screen,
 ) {
     composable(LeafScreen.Result.createRoute(root), arguments = emptyList()) {
-        Result {
+        Result(onBack = {
+            navController.popBackStack()
+        }, onTryAgain = {
 
-        }
+        })
     }
 }

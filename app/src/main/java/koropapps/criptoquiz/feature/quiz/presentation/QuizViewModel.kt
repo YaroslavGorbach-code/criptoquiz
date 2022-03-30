@@ -5,6 +5,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import koropapps.criptoquiz.QUIZ_NAME_ARG
+import koropapps.criptoquiz.base.utill.calculatePercentage
 import koropapps.criptoquiz.bussines.GetQuestionsInteractor
 import koropapps.criptoquiz.bussines.GetQuizInteractor
 import koropapps.criptoquiz.bussines.SetResentAnswersInteractor
@@ -43,16 +44,16 @@ class QuizViewModel @Inject constructor(
         _answers,
         isNeedToNavigateToResult,
     ) { quiz, questions, answers, needToNavigate ->
-        setResentAnswersInteractor.invoke(answers = _answers.value)
+        setResentAnswersInteractor.invoke(answers = answers)
 
         QuizViewState(
             quiz = quiz,
             question = questions.firstOrNull(),
             answersSize = answers.size,
             isFinish = questions.isEmpty(),
-            progress = calculateProgress(
-                answersSize = answers.size,
-                questionsSize = questions.size
+            progress = calculatePercentage(
+                value = answers.size,
+                totalValue = questions.size + answers.size,
             ),
             hasNeedToNavigateToResult = needToNavigate
         )
@@ -93,8 +94,6 @@ class QuizViewModel @Inject constructor(
         }
     }
 
-    private fun calculateProgress(answersSize: Int, questionsSize: Int) =
-        if (answersSize > 0) (answersSize.toFloat() / (questionsSize.toFloat() + answersSize.toFloat())) else 0.0f
 
     fun submitAction(action: QuizAction) {
         viewModelScope.launch {

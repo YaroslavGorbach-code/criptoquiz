@@ -5,6 +5,7 @@
     <string name="minutes">Минут:</string>
     <string name="empty" />
     <string name="result">Result</string>
+    <string name="correct_answers">Correct answers</string>
     <string name="start_quiz">START QUIZ</string>
     <string name="bitcoin_beginner_name">Bitcoin beginner</string>
     <string name="bitcoin_beginner_description">
