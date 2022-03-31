@@ -4,6 +4,7 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
+import koropapps.criptoquiz.NEED_RELOAD_QUIZ_ARG
 import koropapps.criptoquiz.QUIZ_NAME_ARG
 import koropapps.criptoquiz.base.utill.calculatePercentage
 import koropapps.criptoquiz.bussines.GetQuestionsInteractor
@@ -30,6 +31,8 @@ class QuizViewModel @Inject constructor(
 
     val quizName: QuizName = savedStateHandle[QUIZ_NAME_ARG]!!
 
+    val needReload: Boolean = savedStateHandle[NEED_RELOAD_QUIZ_ARG]!!
+
     private val pendingActions = MutableSharedFlow<QuizAction>()
 
     private val questions: MutableStateFlow<List<Question>> = MutableStateFlow(emptyList())
@@ -55,6 +58,7 @@ class QuizViewModel @Inject constructor(
                 value = answers.size,
                 totalValue = questions.size + answers.size,
             ),
+            needReload = needReload,
             hasNeedToNavigateToResult = needToNavigate
         )
     }.stateIn(
@@ -65,9 +69,7 @@ class QuizViewModel @Inject constructor(
 
     init {
         viewModelScope.launch {
-            getQuestionsInteractor(quizName)
-                .flowOn(Dispatchers.IO)
-                .collect(questions::emit)
+            loadQuestions()
 
             pendingActions.collect { action ->
                 when (action) {
@@ -76,10 +78,17 @@ class QuizViewModel @Inject constructor(
                     }
                     QuizAction.NavigateToResult -> {
                         isNeedToNavigateToResult.emit(false)
+                        loadQuestions()
                     }
                 }
             }
         }
+    }
+
+    private suspend fun loadQuestions() {
+        getQuestionsInteractor(quizName)
+            .flowOn(Dispatchers.IO)
+            .collect(questions::emit)
     }
 
     private fun answerQuestion(answerId: Int) {
@@ -93,7 +102,6 @@ class QuizViewModel @Inject constructor(
             questions.drop(1)
         }
     }
-
 
     fun submitAction(action: QuizAction) {
         viewModelScope.launch {

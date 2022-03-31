@@ -1,4 +1,5 @@
 package koropapps.criptoquiz.feature.quiz.ui
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -26,6 +27,7 @@ import koropapps.criptoquiz.common_ui.theme.CryptoTheme
 import koropapps.criptoquiz.common_ui.theme.OnSurface
 import koropapps.criptoquiz.common_ui.theme.PrimaryText
 import koropapps.criptoquiz.common_ui.ui.RoundedLinearProgressIndicator
+import koropapps.criptoquiz.data.quizzes.local.model.QuizName
 import koropapps.criptoquiz.feature.quiz.model.QuizAction
 import koropapps.criptoquiz.feature.quiz.model.QuizViewState
 import koropapps.criptoquiz.feature.quiz.presentation.QuizViewModel
@@ -34,7 +36,7 @@ import koropapps.criptoquiz.feature.quiz.presentation.QuizViewModel
 @Composable
 fun Quiz(
     onBack: () -> Unit,
-    onResult: () -> Unit,
+    onResult: (QuizName) -> Unit,
 ) {
     Quiz(
         viewModel = hiltViewModel(),
@@ -48,7 +50,7 @@ fun Quiz(
 internal fun Quiz(
     viewModel: QuizViewModel,
     onBack: () -> Unit,
-    onResult: () -> Unit
+    onResult: (QuizName) -> Unit
 ) {
     val viewState = viewModel.state.collectAsState()
 
@@ -66,7 +68,7 @@ internal fun Quiz(
     state: QuizViewState,
     actioner: (QuizAction) -> Unit,
     onBack: () -> Unit,
-    onResult: () -> Unit
+    onResult: (QuizName) -> Unit
 ) {
     Column {
         Toolbar(state.quiz.name.resId) {
@@ -98,9 +100,6 @@ internal fun Quiz(
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(20.dp)
-                    .clickable {
-                        onResult.invoke()
-                    }
             )
         }
 
@@ -110,8 +109,8 @@ internal fun Quiz(
                 .height(40.dp)
         )
 
-        if (state.isFinish && state.hasNeedToNavigateToResult) {
-            onResult.invoke()
+        if (state.isFinish && state.hasNeedToNavigateToResult && state.answersSize > 0) {
+            onResult.invoke(state.quiz.name)
             actioner(QuizAction.NavigateToResult)
         } else {
             Questions(state = state, actioner = actioner)

@@ -1,10 +1,32 @@
 package koropapps.criptoquiz.feature.result.model
 
-import koropapps.criptoquiz.common_ui.utill.UiMessage
 import koropapps.criptoquiz.data.quizzes.local.model.Answer
+import koropapps.criptoquiz.data.quizzes.local.model.QuizName
 
 data class ResultViewState(
-    val answers: List<Answer> = emptyList(),
+    val answers: List<Answer> = listOf(
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+        Answer.Test,
+    ),
+    val name: QuizName = QuizName.TEST
 ) {
     companion object {
         val Test = ResultViewState()

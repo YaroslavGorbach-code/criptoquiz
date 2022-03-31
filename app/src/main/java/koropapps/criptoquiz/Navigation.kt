@@ -15,6 +15,7 @@ import koropapps.criptoquiz.feature.result.ui.Result
 import kotlinx.coroutines.InternalCoroutinesApi
 
 const val QUIZ_NAME_ARG = "EXERCISE_NAME_ARG"
+const val NEED_RELOAD_QUIZ_ARG = "NEED_RELOAD_QUIZ_ARG"
 
 sealed class Screen(val route: String) {
     object Quizzes : Screen("Quizzes")
@@ -27,11 +28,15 @@ private sealed class LeafScreen(
 
     object QuizzesList : LeafScreen("QuizzesList")
 
-    object Result : LeafScreen("Result")
-
-    object Quiz : LeafScreen("Quiz/{${QUIZ_NAME_ARG}}") {
+    object Result : LeafScreen("Result/{${QUIZ_NAME_ARG}}") {
         fun createRoute(root: Screen, quizName: QuizName): String {
-            return "${root.route}/Quiz/$quizName"
+            return "${root.route}/Result/$quizName"
+        }
+    }
+
+    object Quiz : LeafScreen("Quiz/{${QUIZ_NAME_ARG}}/{${NEED_RELOAD_QUIZ_ARG}}") {
+        fun createRoute(root: Screen, quizName: QuizName, needReloadQuiz: Boolean = false): String {
+            return "${root.route}/Quiz/$quizName/$needReloadQuiz"
         }
     }
 }
@@ -95,11 +100,14 @@ private fun NavGraphBuilder.addQuiz(
         LeafScreen.Quiz.createRoute(root), arguments = listOf(
             navArgument(QUIZ_NAME_ARG) {
                 type = NavType.EnumType(QuizName::class.java)
+            }, navArgument(NEED_RELOAD_QUIZ_ARG) {
+                type = NavType.BoolType
             })
     ) {
         Quiz(onBack = { navController.popBackStack() },
-            onResult = {
-                navController.navigate(LeafScreen.Result.createRoute(root)) {
+            onResult = { name ->
+                navController.popBackStack()
+                navController.navigate(LeafScreen.Result.createRoute(root, name)) {
                     popUpTo(LeafScreen.QuizzesList.createRoute(root = root)) {
                         inclusive = false
                     }
@@ -115,11 +123,26 @@ private fun NavGraphBuilder.addResult(
     navController: NavController,
     root: Screen,
 ) {
-    composable(LeafScreen.Result.createRoute(root), arguments = emptyList()) {
+    composable(
+        LeafScreen.Result.createRoute(root), arguments = listOf(
+            navArgument(QUIZ_NAME_ARG) {
+                type = NavType.EnumType(QuizName::class.java)
+            })
+    ) {
         Result(onBack = {
             navController.popBackStack()
-        }, onTryAgain = {
-
+        }, onTryAgain = { name ->
+            navController.navigate(
+                LeafScreen.Quiz.createRoute(
+                    root = root,
+                    quizName = name,
+                    needReloadQuiz = true
+                )
+            ) {
+                popUpTo(LeafScreen.QuizzesList.createRoute(root = root)) {
+                    inclusive = false
+                }
+            }
         })
     }
 }

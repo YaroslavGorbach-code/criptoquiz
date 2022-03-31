@@ -30,6 +30,7 @@ class RepoQuizzesImp @Inject constructor() : RepoQuizzes {
     override var answers: List<Answer>
         get() = resentAnswers.toList()
         set(value) {
+            resentAnswers.clear()
             resentAnswers.addAll(value)
         }
 }
