@@ -83,12 +83,12 @@ internal fun Result(
             backgroundStrokeWidth = 14.dp
         ) {
             Text(
-                text = (String.format(
+                text = String.format(
                     "%.2f",
                     (state.answers.getCorrectPercentage() * 100f)
                 ) + "%\n" + stringResource(
                     id = R.string.correct_answers
-                )),
+                ),
                 textAlign = TextAlign.Center,
                 fontSize = 14.sp,
                 modifier = Modifier.align(Alignment.Center),

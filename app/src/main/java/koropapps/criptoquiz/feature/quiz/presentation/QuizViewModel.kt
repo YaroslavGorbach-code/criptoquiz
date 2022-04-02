@@ -1,37 +1,38 @@
 package koropapps.criptoquiz.feature.quiz.presentation
 
+import android.util.Log
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import koropapps.criptoquiz.NEED_RELOAD_QUIZ_ARG
 import koropapps.criptoquiz.QUIZ_NAME_ARG
 import koropapps.criptoquiz.base.utill.calculatePercentage
 import koropapps.criptoquiz.bussines.GetQuestionsInteractor
 import koropapps.criptoquiz.bussines.GetQuizInteractor
+import koropapps.criptoquiz.bussines.SaveQuizResultInteractor
 import koropapps.criptoquiz.bussines.SetResentAnswersInteractor
 import koropapps.criptoquiz.data.quizzes.local.model.Answer
 import koropapps.criptoquiz.data.quizzes.local.model.Question
 import koropapps.criptoquiz.data.quizzes.local.model.QuizName
+import koropapps.criptoquiz.data.quizzes.local.model.getCorrectPercentage
 import koropapps.criptoquiz.feature.quiz.model.QuizAction
 import koropapps.criptoquiz.feature.quiz.model.QuizViewState
-import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.flow.SharingStarted.Companion.WhileSubscribed
-import kotlinx.coroutines.launch
 import javax.inject.Inject
+import kotlin.coroutines.CoroutineContext
 
 @HiltViewModel
 class QuizViewModel @Inject constructor(
     private val getQuizInteractor: GetQuizInteractor,
     private val getQuestionsInteractor: GetQuestionsInteractor,
     private val setResentAnswersInteractor: SetResentAnswersInteractor,
+    private val saveQuizResultInteractor: SaveQuizResultInteractor,
     savedStateHandle: SavedStateHandle,
 ) : ViewModel() {
 
     val quizName: QuizName = savedStateHandle[QUIZ_NAME_ARG]!!
-
-    val needReload: Boolean = savedStateHandle[NEED_RELOAD_QUIZ_ARG]!!
 
     private val pendingActions = MutableSharedFlow<QuizAction>()
 
@@ -39,27 +40,22 @@ class QuizViewModel @Inject constructor(
 
     private val _answers: MutableStateFlow<MutableList<Answer>> = MutableStateFlow(ArrayList())
 
-    private val isNeedToNavigateToResult: MutableStateFlow<Boolean> = MutableStateFlow(true)
-
     val state: StateFlow<QuizViewState> = combine(
         getQuizInteractor(quizName),
         questions,
         _answers,
-        isNeedToNavigateToResult,
-    ) { quiz, questions, answers, needToNavigate ->
+    ) { quiz, questions, answers ->
         setResentAnswersInteractor.invoke(answers = answers)
 
         QuizViewState(
             quiz = quiz,
             question = questions.firstOrNull(),
             answersSize = answers.size,
-            isFinish = questions.isEmpty(),
+            isFinish = questions.isEmpty() && answers.size > 0,
             progress = calculatePercentage(
                 value = answers.size,
                 totalValue = questions.size + answers.size,
             ),
-            needReload = needReload,
-            hasNeedToNavigateToResult = needToNavigate
         )
     }.stateIn(
         scope = viewModelScope,
@@ -70,25 +66,35 @@ class QuizViewModel @Inject constructor(
     init {
         viewModelScope.launch {
             loadQuestions()
+        }
 
+        viewModelScope.launch() {
             pendingActions.collect { action ->
                 when (action) {
                     is QuizAction.Answer -> {
                         answerQuestion(action.answerId)
                     }
                     QuizAction.NavigateToResult -> {
-                        isNeedToNavigateToResult.emit(false)
-                        loadQuestions()
+                            saveResult()
                     }
                 }
             }
         }
     }
 
+    private suspend fun saveResult() {
+        saveQuizResultInteractor(
+            quizName = quizName,
+            correctPresent = _answers.value.getCorrectPercentage() * 100f
+        )
+    }
+
     private suspend fun loadQuestions() {
         getQuestionsInteractor(quizName)
             .flowOn(Dispatchers.IO)
             .collect(questions::emit)
+
+        _answers.emit(ArrayList())
     }
 
     private fun answerQuestion(answerId: Int) {

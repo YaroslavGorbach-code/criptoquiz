@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import koropapps.criptoquiz.R
 import koropapps.criptoquiz.common_ui.theme.CryptoTheme
 
@@ -30,6 +31,8 @@ fun AnswerItem(answerId: Int, onAnswer: (id: Int) -> Unit) {
             .clickable { onAnswer(answerId) }
     ) {
         Text(
+            style = MaterialTheme.typography.caption,
+            fontSize = 15.sp,
             text = stringResource(id = answerId),
             color = MaterialTheme.colors.background,
             modifier = Modifier

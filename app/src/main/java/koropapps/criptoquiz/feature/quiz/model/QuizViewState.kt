@@ -10,8 +10,6 @@ data class QuizViewState(
     val answersSize: Int = 0,
     val progress: Float = 0f,
     val isFinish: Boolean = false,
-    val needReload: Boolean = false,
-    val hasNeedToNavigateToResult: Boolean = true
 ) {
     companion object {
         val Test = QuizViewState()

@@ -4,8 +4,10 @@ import koropapps.criptoquiz.data.quizzes.local.mapper.QuizNameToQuizComplexityMa
 import koropapps.criptoquiz.data.quizzes.local.mapper.QuizNameToShortDescriptionMapper
 import koropapps.criptoquiz.data.quizzes.local.model.Quiz
 import koropapps.criptoquiz.data.quizzes.local.model.QuizName
+import koropapps.criptoquiz.data.quizzes.local.model.QuizResult
 
 class QuizzesFactory(
+    private val quizResults: List<QuizResult>,
     private val questionsFactory: QuestionsFactory,
     private val quizNameToShortDescriptionMapper: QuizNameToShortDescriptionMapper,
     private val quizNameToQuizComplexityMapper: QuizNameToQuizComplexityMapper
@@ -18,7 +20,8 @@ class QuizzesFactory(
                 name = name,
                 descriptionRes = quizNameToShortDescriptionMapper.map(name),
                 questions = questionsFactory.create(name),
-                complexity = quizNameToQuizComplexityMapper.map(name)
+                complexity = quizNameToQuizComplexityMapper.map(name),
+                results = quizResults.filter { it.name == name }
             )
         }
     }

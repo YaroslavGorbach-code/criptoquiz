@@ -8,7 +8,9 @@ import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment.Companion.Bottom
 import androidx.compose.ui.Alignment.Companion.CenterVertically
+import androidx.compose.ui.Alignment.Companion.End
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
@@ -16,7 +18,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import koropapps.criptoquiz.R
-import koropapps.criptoquiz.common_ui.theme.CryptoTheme
 import koropapps.criptoquiz.common_ui.theme.OnSurface
 import koropapps.criptoquiz.common_ui.theme.PrimaryText
 import koropapps.criptoquiz.common_ui.theme.SecondaryText
@@ -29,9 +30,9 @@ fun QuizItem(quiz: Quiz, onStartClick: () -> Unit) {
         modifier = Modifier
             .padding(8.dp)
             .fillMaxWidth()
-            .height(180.dp)
+            .height(190.dp)
             .background(color = OnSurface, shape = MaterialTheme.shapes.medium)
-            .padding(16.dp)
+            .padding(8.dp)
     )
     {
         Row(
@@ -45,13 +46,37 @@ fun QuizItem(quiz: Quiz, onStartClick: () -> Unit) {
                 contentDescription = "",
                 modifier = Modifier
                     .size(80.dp)
-                    .align(CenterVertically)
+                    .align(Bottom)
             )
             Column(
                 modifier = Modifier
                     .align(CenterVertically)
+                    .fillMaxWidth()
                     .padding(start = 8.dp)
+                    .weight(1f)
             ) {
+                Column(modifier = Modifier
+                    .padding(end = 8.dp)
+                    .align(End)) {
+                    Row() {
+                        Text(
+                            text = stringResource(id = R.string.difficulty) + " ",
+                            fontSize = 12.sp,
+                            style = MaterialTheme.typography.caption
+                        )
+                        Text(
+                            text = stringResource(id = quiz.complexity.id),
+                            fontSize = 12.sp,
+                            style = MaterialTheme.typography.caption,
+                            color = quiz.complexity.color
+                        )
+                    }
+                    Text(
+                        text = stringResource(id = R.string.average_score) + " ${quiz.averageResult}",
+                        fontSize = 12.sp
+                    )
+
+                }
                 Text(
                     text = stringResource(id = quiz.name.resId),
                     style = MaterialTheme.typography.caption,
@@ -67,6 +92,7 @@ fun QuizItem(quiz: Quiz, onStartClick: () -> Unit) {
                     overflow = TextOverflow.Ellipsis
                 )
             }
+
         }
 
         OutlinedButton(
@@ -87,7 +113,7 @@ fun QuizItem(quiz: Quiz, onStartClick: () -> Unit) {
 @Preview(showBackground = true)
 @Composable
 fun QuizItemPreview(quiz: Quiz = Quiz.Test) {
-    CryptoTheme {
+    MaterialTheme {
         QuizItem(quiz = quiz) {}
     }
 }

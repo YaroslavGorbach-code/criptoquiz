@@ -97,6 +97,7 @@ internal fun Quiz(
 
             RoundedLinearProgressIndicator(
                 progress = state.progress,
+                backgroundColor = OnSurface,
                 modifier = Modifier
                     .fillMaxWidth()
                     .height(20.dp)
@@ -109,7 +110,7 @@ internal fun Quiz(
                 .height(40.dp)
         )
 
-        if (state.isFinish && state.hasNeedToNavigateToResult && state.answersSize > 0) {
+        if (state.isFinish) {
             onResult.invoke(state.quiz.name)
             actioner(QuizAction.NavigateToResult)
         } else {
@@ -171,7 +172,8 @@ private fun Questions(state: QuizViewState, actioner: (QuizAction) -> Unit) {
 
             LazyColumn {
                 items(items = state.question.answerIds) { id ->
-                    AnswerItem(id) { actioner(QuizAction.Answer(it)) }
+                    AnswerItem(id) {
+                        actioner(QuizAction.Answer(it)) }
                 }
             }
 
