@@ -7,7 +7,8 @@ class QuizNameToQuizComplexityMapper() {
     fun map(name: QuizName): QuizComplexity {
         return when (name) {
             QuizName.BITCOIN_BEGINNER -> QuizComplexity.EASY
-            QuizName.TEST -> QuizComplexity.MIDDLE
+            QuizName.BITCOIN_INTERMEDIATE -> QuizComplexity.MIDDLE
+            QuizName.BITCOIN_HARDCORE -> QuizComplexity.HARD
         }
     }
 }

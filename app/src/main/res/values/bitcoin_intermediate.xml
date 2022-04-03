@@ -182,7 +182,7 @@
 
     <string name="bitcoin_intermediate_question_31">How long is a Bitcoin Block?</string>
     <string name="bitcoin_intermediate_question_31_answer_1">660 Seconds</string>
-    <string name="bitcoin_intermediate_question_31_answer_2_">10 Minutes</string>
+    <string name="bitcoin_intermediate_question_31_answer_2">10 Minutes</string>
     <string name="bitcoin_intermediate_question_31_answer_3">As long as a piece of string</string>
     <string name="bitcoin_intermediate_question_31_answer_4_correct">Generally 10 minutes</string>
 

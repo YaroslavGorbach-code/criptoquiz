@@ -26,7 +26,7 @@ data class ResultViewState(
         Answer.Test,
         Answer.Test,
     ),
-    val name: QuizName = QuizName.TEST
+    val name: QuizName = QuizName.BITCOIN_BEGINNER
 ) {
     companion object {
         val Test = ResultViewState()

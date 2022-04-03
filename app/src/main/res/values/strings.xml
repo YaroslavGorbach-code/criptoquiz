@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">criptoquiz</string>
+    <string name="app_name">Crypto quiz</string>
     <string name="number_of_questions">Вопросов: </string>
     <string name="question_number">Question %1$s</string>
     <string name="minutes">Минут:</string>
@@ -12,8 +12,16 @@
     <string name="try_again">TRY AGAIN</string>
     <string name="finish">FINISH</string>
     <string name="bitcoin_beginner_name">Bitcoin beginner</string>
+    <string name="bitcoin_Intermediate_name">Bitcoin intermediate</string>
+    <string name="bitcoin_hardcore_name">Bitcoin hardcore</string>
     <string name="bitcoin_beginner_description">
        Test your bitcoin skills in our easy newbie quiz on Bitcoin and learn more about this exciting new currency!
+    </string>
+    <string name="bitcoin_intermediate_description">
+       Test your skills in our Bitcoin intermediate quiz! Prove you have a solid grounding in the subject!
+    </string>
+    <string name="bitcoin_hardcore_description">
+       Test your skills in our Bitcoin hardcore quiz! Prove you are the best!
     </string>
     <string name="quizzes_app_bar_text">Test your Bitcoin and Crypto Knowledge</string>
     <string name="answers">Answers</string>

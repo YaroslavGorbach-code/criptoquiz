@@ -1,9 +1,9 @@
 package koropapps.criptoquiz.data.quizzes.repo
 
-import android.util.Log
 import koropapps.criptoquiz.data.quizzes.local.dao.QuizResultDao
 import koropapps.criptoquiz.data.quizzes.local.factory.QuestionsFactory
 import koropapps.criptoquiz.data.quizzes.local.factory.QuizzesFactory
+import koropapps.criptoquiz.data.quizzes.local.mapper.QuizNameToIconMapper
 import koropapps.criptoquiz.data.quizzes.local.mapper.QuizNameToQuizComplexityMapper
 import koropapps.criptoquiz.data.quizzes.local.mapper.QuizNameToShortDescriptionMapper
 import koropapps.criptoquiz.data.quizzes.local.model.Answer
@@ -21,19 +21,17 @@ class RepoQuizzesImp @Inject constructor(private val quizResultDao: QuizResultDa
 
     override fun observe(): Flow<List<Quiz>> {
         return quizResultDao.observe().map { results ->
-            Log.i("dsdsdds", results.toString())
             QuizzesFactory(
                 quizResults = results,
                 questionsFactory = QuestionsFactory(),
                 quizNameToShortDescriptionMapper = QuizNameToShortDescriptionMapper(),
                 quizNameToQuizComplexityMapper = QuizNameToQuizComplexityMapper(),
+                quizNameToIconMapper = QuizNameToIconMapper
             ).create()
         }
     }
 
     override suspend fun saveResult(quizName: QuizName, correctPresent: Float) {
-        Log.i("dsdsdds", quizName.toString())
-        Log.i("dsdsdds", correctPresent.toString())
 
         quizResultDao.insert(QuizResult(name = quizName, correctPresent = correctPresent))
     }
