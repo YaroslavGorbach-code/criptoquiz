@@ -22,10 +22,15 @@ data class Quiz(
 
     val averageResult: String
         get() {
-            return  String.format(
-                "%.2f",
-                (results.map(QuizResult::correctPresent)
-                    .sum() / results.size.toFloat())
-            )
+            return if (results.isEmpty().not()) {
+                String.format(
+                    "%.2f",
+                    (results.map(QuizResult::correctPresent)
+                        .sum() / results.size.toFloat())
+                )
+            } else {
+                "0%"
+            }
+
         }
 }
